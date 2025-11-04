@@ -1,0 +1,6 @@
+@XDrones_HostAddress = http://localhost:5062
+
+GET {{XDrones_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

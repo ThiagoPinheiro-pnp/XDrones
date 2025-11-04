@@ -1,0 +1,8 @@
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.csproj.AssemblyReference.cache
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.AssemblyInfoInputs.cache
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.AssemblyInfo.cs
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.csproj.CoreCompileInputs.cache
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.MvcApplicationPartsAssemblyInfo.cs
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.MvcApplicationPartsAssemblyInfo.cache
+/workspaces/XDrones/Backend/obj/Debug/net8.0/XDrones.sourcelink.json
