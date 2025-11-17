@@ -3,18 +3,18 @@
         "id": 1,
         "nome": "Fone Bluetooth",
         "preco": 89.90,
-        "imagem": "assets/img/produto1.jpg"
+        "imagem": "assets/img/Log-1_com_imagem.png"
     },
     {
         "id": 2,
         "nome": "Relógio Digital",
         "preco": 69.90,
-        "imagem": "assets/img/produto2.jpg"
+        "imagem": "assets/img/Log-1_com_imagem.png"
     },
     {
         "id": 3,
         "nome": "Camiseta Premium",
         "preco": 49.90,
-        "imagem": "assets/img/produto3.jpg"
+        "imagem": "assets/img/Log-1_com_imagem.png"
     }
 ]
