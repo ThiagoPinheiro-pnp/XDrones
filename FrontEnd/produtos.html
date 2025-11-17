@@ -4,29 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Produtos</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/cart.css">
-
-
 </head>
 
 <body>
 
+    <!-- HEADER -->
     <div data-include="components/header.html"></div>
 
-    <section class="produtos">
-        <h2>Produtos Disponíveis</h2>
+    <!-- MAIN -->
+    <main>
+        <section class="produtos">
+            <h2>Produtos Disponíveis</h2>
+            <div id="lista-produtos" class="produtos-container"></div>
+        </section>
+    </main>
 
-        <div id="listaProdutos" class="produtos-container"></div>
-    </section>
-
+    <!-- FOOTER -->
     <div data-include="components/footer.html"></div>
 
+    <!-- JS -->
     <script src="assets/js/products.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/ui.js"></script>
+
+    <!-- Script para carregar header e footer -->
+    <script>
+        function loadHTML(selector, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector(selector).innerHTML = data;
+                })
+                .catch(err => console.error(err));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+            loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+        });
+    </script>
 
 </body>
 
