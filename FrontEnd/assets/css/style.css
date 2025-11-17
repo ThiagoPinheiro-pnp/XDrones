@@ -1,3 +1,21 @@
+/* Faz o footer ficar grudado no final */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* O conteúdo cresce e empurra o footer para baixo */
+main {
+    flex: 1;
+}
+
+
 /* ----------------------------
    RESET E CONFIGURAÇÕES GERAIS
 -----------------------------*/

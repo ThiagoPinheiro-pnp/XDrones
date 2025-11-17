@@ -1,17 +1,4 @@
-const produtos = [
-    {
-        id: 1,
-        nome: "DJI Mini 4 Pro",
-        preco: 4590,
-        imagem: "assets/img/mini4.jpg"
-    },
-    {
-        id: 2,
-        nome: "DJI Air 3",
-        preco: 7990,
-        imagem: "assets/img/air3.jpg"
-    }
-];
+let produtos = [];
 
 function carregarProdutos() {
     const lista = document.querySelector("#lista-produtos");
@@ -22,7 +9,7 @@ function carregarProdutos() {
             <div class="produto">
                 <img src="${produto.imagem}" alt="${produto.nome}">
                 <h3>${produto.nome}</h3>
-                <p class="preco">R$ ${produto.preco.toLocaleString()}</p>
+                <p class="preco">R$ ${produto.preco.toFixed(2)}</p>
                 <button class="btn comprar" onclick="adicionarAoCarrinho(${produto.id})">
                     Comprar
                 </button>
@@ -31,4 +18,12 @@ function carregarProdutos() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", carregarProdutos);
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("assets/data/produtos.json")
+        .then(res => res.json())
+        .then(data => {
+            produtos = data;
+            carregarProdutos();
+        })
+        .catch(err => console.error("Erro ao carregar produtos.json:", err));
+});
