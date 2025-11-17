@@ -1,0 +1,15 @@
+/* ---------------------------------
+             FOOTER
+----------------------------------*/
+
+.rodape {
+    background: #111;
+    color: #ccc;
+    padding: 40px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.rodape p {
+    margin: 5px 0;
+}

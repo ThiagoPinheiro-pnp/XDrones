@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+
+</head>
+
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <section class="checkout">
+        <h2>Finalizar Compra</h2>
+
+        <form class="checkout-form">
+            <label>Nome Completo</label>
+            <input type="text" required>
+
+            <label>Endereço</label>
+            <input type="text" required>
+
+            <label>Forma de Pagamento</label>
+            <select required>
+                <option>Pix</option>
+                <option>Cartão de Crédito</option>
+                <option>Boleto</option>
+            </select>
+
+            <button class="btn">Confirmar Pedido</button>
+        </form>
+    </section>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="assets/js/ui.js"></script>
+</body>
+
+</html>

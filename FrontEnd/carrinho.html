@@ -3,29 +3,32 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home - Loja Dji</title>
+    <title>Carrinho</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/cart.css">
-
 
 </head>
 
 <body>
 
-    <!-- Importar header -->
     <div data-include="components/header.html"></div>
 
-    <section class="banner">
-        <h1>Bem-vindo à nossa Loja</h1>
-        <p>Produtos com preços incríveis</p>
-        <a href="produtos.html" class="btn">Ver Produtos</a>
+    <section class="carrinho-pagina">
+        <h2>Seu Carrinho</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="total-area">
+            <h3>Total: <span id="cartTotal">R$ 0,00</span></h3>
+            <a href="compra.html" class="btn">Finalizar Compra</a>
+        </div>
     </section>
 
-    <!-- Importar footer -->
     <div data-include="components/footer.html"></div>
 
+    <script src="assets/js/cart.js"></script>
     <script src="assets/js/ui.js"></script>
 </body>
 

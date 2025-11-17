@@ -3,27 +3,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home - Loja Dji</title>
+    <title>Contato</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/cart.css">
-
 
 </head>
 
 <body>
 
-    <!-- Importar header -->
     <div data-include="components/header.html"></div>
 
-    <section class="banner">
-        <h1>Bem-vindo à nossa Loja</h1>
-        <p>Produtos com preços incríveis</p>
-        <a href="produtos.html" class="btn">Ver Produtos</a>
+    <section class="contato">
+        <h2>Entre em Contato</h2>
+
+        <form class="contato-form">
+            <label>Nome</label>
+            <input type="text" required>
+
+            <label>Email</label>
+            <input type="email" required>
+
+            <label>Mensagem</label>
+            <textarea required></textarea>
+
+            <button class="btn">Enviar</button>
+        </form>
     </section>
 
-    <!-- Importar footer -->
     <div data-include="components/footer.html"></div>
 
     <script src="assets/js/ui.js"></script>
