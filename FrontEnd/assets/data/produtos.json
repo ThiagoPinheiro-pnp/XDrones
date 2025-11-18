@@ -16,5 +16,29 @@
         "nome": "Camiseta Premium",
         "preco": 49.90,
         "imagem": "assets/img/Log-1_com_imagem.png"
+    },
+    {
+        "id": 4,
+        "nome": "Camiseta Premium",
+        "preco": 49.90,
+        "imagem": "assets/img/Log-1_com_imagem.png"
+    },
+    {
+        "id": 5,
+        "nome": "Camiseta Premium",
+        "preco": 49.90,
+        "imagem": "assets/img/Log-1_com_imagem.png"
+    },
+    {
+        "id": 6,
+        "nome": "Camiseta Premium",
+        "preco": 49.90,
+        "imagem": "assets/img/Log-1_com_imagem.png"
+    },
+    {
+        "id": 7,
+        "nome": "Camiseta Premium",
+        "preco": 49.90,
+        "imagem": "assets/img/Log-1_com_imagem.png"
     }
 ]

@@ -47,6 +47,7 @@ h1, h2, h3 {
     border-radius: 6px;
     display: inline-block;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .btn:hover {
