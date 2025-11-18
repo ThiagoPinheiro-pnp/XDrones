@@ -1,3 +1,23 @@
 <footer class="rodape">
     <p>© 2025 - Loja Inspirada - Projeto Escolar</p>
 </footer>
+
+<div id="fundo-escuro-carrinho" class="fundo-escuro-carrinho" onclick="fecharCarrinho()"></div>
+
+<div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <span>Seu Carrinho</span>
+        <button class="close-cart" onclick="fecharCarrinho()">&times;</button>
+    </div>
+    
+    <div id="cart-items-sidebar" class="cart-items">
+        </div>
+
+    <div class="cart-footer">
+        <div class="total">
+            <span>Total:</span>
+            <strong id="cart-total-sidebar">R$ 0,00</strong>
+        </div>
+        <button class="btn-pay" onclick="window.location.href='carrinho.html'">Ver Detalhes</button>
+    </div>
+</div>
