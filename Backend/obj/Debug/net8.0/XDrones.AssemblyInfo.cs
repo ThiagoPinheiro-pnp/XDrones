@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XDrones")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74eb8a400817b0c2b37d923c3d233dfa6f91f740")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e625499f27cbd206fc99dea1fa7345f5ea232576")]
 [assembly: System.Reflection.AssemblyProductAttribute("XDrones")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XDrones")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

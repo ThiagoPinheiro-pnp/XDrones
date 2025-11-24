@@ -1,15 +1,150 @@
-/* ---------------------------------
-             FOOTER
-----------------------------------*/
+/* =======================================================
+   FOOTER PROFISSIONAL (TEMA ESCURO)
+   ======================================================= */
 
-.rodape {
-    background: #111;
-    color: #ccc;
-    padding: 40px;
-    text-align: center;
-    margin-top: 40px;
+.rodape-pro {
+    background-color: #1a1a1a; /* Fundo escuro estilo DJI */
+    color: #ccc; /* Texto cinza claro */
+    padding: 70px 0 0 0;
+    font-family: 'Inter', sans-serif;
+    margin-top: auto; /* Garante que fica no final da página */
 }
 
-.rodape p {
-    margin: 5px 0;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    /* Grid para as 4 colunas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+/* Títulos das Colunas */
+.footer-logo {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Textos e Links */
+.footer-col p {
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 15px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.footer-col ul li a:hover {
+    color: #e63946; /* Vermelho ao passar o mouse */
+    padding-left: 5px; /* Pequeno movimento para a direita */
+}
+
+/* Redes Sociais */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #e63946;
+    transform: translateY(-3px);
+}
+
+.contato-footer {
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+/* Barra Inferior (Copyright) */
+.footer-bottom {
+    background-color: #111; /* Um tom ainda mais escuro */
+    padding: 25px 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.legal-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.legal-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Responsividade para telemóveis */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Uma coluna só no mobile */
+        text-align: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .legal-links {
+        margin-top: 10px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
 }

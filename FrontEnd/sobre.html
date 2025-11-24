@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - XDRONES</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <section class="banner banner-sobre">
+            <h1>Nossa História</h1>
+            <p>Inovação e tecnologia vistas de cima.</p>
+        </section>
+
+        <section class="sobre-texto">
+            <div class="container-texto">
+                <h2>Quem é a XDRONES?</h2>
+                <p>A XDRONES nasceu de um projeto ambicioso com uma visão clara: democratizar o acesso à tecnologia de drones de ponta. Inspirados pelos líderes globais do mercado, fundamos nossa loja para ser mais do que um ponto de venda; queremos ser o seu parceiro na exploração dos céus.</p>
+                <p>Acreditamos que os drones não são apenas gadgets, mas ferramentas poderosas capazes de transformar indústrias, capturar momentos inesquecíveis e otimizar o trabalho no campo e na cidade. Desde o entusiasta que busca seu primeiro voo até o profissional que necessita de precisão técnica, a XDRONES está aqui para elevar sua experiência.</p>
+            </div>
+        </section>
+
+        <section class="sobre-pilares">
+            <h2>Por que escolher a XDRONES?</h2>
+            <div class="pilares-grid">
+                
+                <div class="pilar-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3>Tecnologia de Ponta</h3>
+                    <p>Trabalhamos apenas com os equipamentos mais avançados e inovadores do mercado global.</p>
+                </div>
+
+                <div class="pilar-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3>Suporte Especializado</h3>
+                    <p>Nossa equipe entende do assunto e está pronta para ajudar você a escolher o equipamento certo.</p>
+                </div>
+
+                <div class="pilar-item">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-shield-alt"></i>
+                    </div>
+                    <h3>Confiabilidade</h3>
+                    <p>Garantia de procedência e qualidade em todos os produtos que oferecemos.</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/cart.js"></script>
+
+    <script>
+        function loadHTML(selector, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector(selector).innerHTML = data;
+                })
+                .catch(err => console.error(err));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+            loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+        });
+    </script>
+
+</body>
+</html>

@@ -2,92 +2,78 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Home - XDRONES</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/cart.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - XDRONES</title>
 
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- Importar header -->
-    <div data-include="components/header.html"></div>
-    <main>
+  <div data-include="components/header.html"></div>
+
+  <main>
     <section class="banner">
-        <h1>Bem-vindo à xdrones</h1>
-        <p>O futuro começa aqui</p>
-        <a href="produtos.html" class="btn">Ver Produtos</a>
+      <h1>Bem-vindo à xdrones</h1>
+      <p>O futuro começa aqui</p>
+      <a href="produtos.html" class="btn">Ver Produtos</a>
     </section>
+
     <div class="cards-container">
 
-  <div class="card">
-    <img src="assets/img/drone-card-agricultra.png" class="card-bg" />
-    <div class="overlay"></div>
-
-    <div class="content">
-      <div class="icon">
-        <i class="fa-solid fa-leaf"></i>
+      <div class="card">
+        <img src="assets/img/drone-card-agricultra.png" class="card-bg" alt="Agricultura" />
+        <div class="overlay"></div>
+        <div class="content">
+          <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>AGRICULTURA</h3>
+          <p>Soluções avançadas para o produtor e indústrias do agronegócio.</p>
+          <a href="#" class="btn-card">Saber mais →</a>
+        </div>
       </div>
 
-      <h3>AGRICULTURA</h3>
-      <p>
-        Oferecemos produtos e serviços avançados que atendem às necessidades
-        de toda cadeia agro, do produtor às grandes indústrias do agronegócio.
-      </p>
-
-      <a class="btn">Saber mais →</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="assets/img/drone-card-monitoramento.jpeg" class="card-bg" />
-    <div class="overlay"></div>
-
-    <div class="content">
-      <div class="icon">
-        <i class="fa-solid fa-gears"></i>
+      <div class="card">
+        <img src="assets/img/drone-card-monitoramento.jpeg" class="card-bg" alt="Indústria" />
+        <div class="overlay"></div>
+        <div class="content">
+          <div class="icon"><i class="fa-solid fa-gears"></i></div>
+          <h3>INDÚSTRIA</h3>
+          <p>Mapeamento topográfico e monitoramento ambiental preciso.</p>
+          <a href="#" class="btn-card">Saber mais →</a>
+        </div>
       </div>
 
-      <h3>INDÚSTRIA E MEIO AMBIENTE</h3>
-      <p>
-        Proporcionamos soluções para mapeamento topográfico, monitoramento ambiental
-        e aplicações que demandam informações geográficas precisas.
-      </p>
+      <div class="card">
+        <img src="assets/img/drone-card-defesa.jpg" class="card-bg" alt="Defesa" />
+        <div class="overlay"></div>
+        <div class="content">
+          <div class="icon">
+            <i class="fa-solid fa-shield"></i>
+          </div>
 
-      <a class="btn">Saber mais →</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="assets/img/drone-card-defesa.jpg" class="card-bg" />
-    <div class="overlay"></div>
-
-    <div class="content">
-      <div class="icon">
-        <i class="fa-solid fa-shield-halved"></i>
+          <h3>SEGURANÇA E DEFESA</h3>
+          <p>
+            Desenvolvemos drones e serviços para operações de vigilância,
+            reconhecimento e monitoramento estratégico.
+          </p>
+          <a href="#" class="btn-card">Saber mais →</a>
+        </div>
       </div>
 
-      <h3>SEGURANÇA E DEFESA</h3>
-      <p>
-        Desenvolvemos drones e serviços para operações de vigilância,
-        reconhecimento e monitoramento estratégico.
-      </p>
-
-      <a class="btn">Saber mais →</a>
     </div>
-  </div>
+  </main>
 
-</div>
-    </main>
-    <!-- Importar footer -->
-    <footer>
-    <div data-include="components/footer.html"></div>
-    </footer>
-    <script src="assets/js/ui.js"></script>
+  <div data-include="components/footer.html"></div>
+
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/cart.js"></script>
+
 </body>
 
 </html>
