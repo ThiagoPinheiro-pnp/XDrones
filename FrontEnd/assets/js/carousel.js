@@ -1,23 +1,25 @@
 function inicializarSwipers() {
     const params = {
-        // 🛑 MUDANÇA: Use slidesPerView: 1 como padrão (mobile first)
-        slidesPerView: 1, 
-        slidesPerGroup: 1, // Adicionado para navegação 1 a 1
-        spaceBetween: 30,
-        loop: false,
-        cssMode: false,
-        breakpoints: {
-            992: { 
-                 slidesPerView: 1.5, 
-                 slidesPerGroup: 1, // Avança 2 slides
+        init: false,
+        // 🛑 MUDANÇA CRUCIAL AQUI:
+        slidesPerView: 'auto', // "Auto" diz para o Swiper: "Leia a largura do CSS"
+        spaceBetween: 30,
+        loop: false,
+        observer: true, 
+        observeParents: true,
+        
+        // Remova os breakpoints complexos que mudam o slidesPerView numérico
+        // Mantenha apenas o spaceBetween se quiser mudar o espaçamento
+        breakpoints: {
+            992: { 
+                 slidesPerView: 'auto', // Mantém auto no tablet
                  spaceBetween: 30 
             },
-            1400: { 
-                 slidesPerView: 2.5, 
-                 slidesPerGroup: 1, // Avança 2 slides
+            1400: { 
+                 slidesPerView: 'auto', // Mantém auto no desktop
                  spaceBetween: 30 
             }
-        }
+        }
     };
 
     function makeSwiper(containerSelector, nextSel, prevSel) {

@@ -114,10 +114,11 @@ section {
 }
 
 .banner p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
     opacity: 0.9;
     max-width: 600px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* =======================================================
@@ -286,6 +287,108 @@ section {
     margin-bottom: 15px;
 }
 
+.contato-bg {
+    /* O linear-gradient cria a sombra escura por cima da imagem para o texto ficar legível */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+        url('../img/drone-card-agricultra.png');
+    
+    background-size: cover;       /* A imagem cobre todo o espaço */
+    background-position: center;  /* Centraliza a imagem */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* (Opcional) Cria efeito parallax onde a imagem fica fixa */
+    
+    padding: 100px 20px; /* Espaçamento interno */
+    min-height: 80vh;    /* Garante que ocupe boa parte da tela */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Container Central --- */
+.container-contato {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.container-contato h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.container-contato p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #e0e0e0;
+}
+
+/* --- O Formulário --- */
+.contato-form {
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo branco transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro (desfoque no fundo) */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidade Safari */
+    
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Sombra suave */
+    
+    text-align: left; /* Volta o texto do form para a esquerda */
+}
+
+.contato-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.contato-form input,
+.contato-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 6px;
+    
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-family: inherit;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus {
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* --- Botão --- */
+.contato-form button.btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #e63946; /* Vermelho destaque (ajuste para a cor da sua marca) */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contato-form button.btn:hover {
+    background-color: #d62828;
+}
+
 .produto img {
     max-width: 100%;
     max-height: 100%;
@@ -361,8 +464,7 @@ textarea {
 
 /* Ajuste do Banner para esta página (Opcional: pode mudar a imagem aqui) */
 .banner-sobre {
-    /* Se quiseres uma imagem diferente da Home, descomenta e muda aqui: */
-    /* background-image: url("../img/outra-imagem-sobre.jpg"); */
+    background-image: url("../img/Drone_Xmobots.jpg");
     height: 60vh; /* Um pouco menor que o da home */
 }
 

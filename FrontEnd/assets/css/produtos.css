@@ -52,137 +52,142 @@
 /* --- NOVO ESTILO: CARD DE PRODUTO MODERN --- */
 /* ========================================= */
 
-.card-produto-novo {
-    background: #fff;
-    border: 1px solid #e0e0e0; /* Borda suave */
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+.card-produto-novo.swiper-slide {
+    /* 1. Muda para coluna (Vertical) */
     display: flex;
-    overflow: hidden; 
+    flex-direction: column; 
+    
+    /* 2. Ajusta o tamanho para parecer um card de loja padrão */
+    width: 380px !important; /* Tamanho fixo ideal para esse design */
+    height: auto;
+    
+    background: #fff;
+    border: 1px solid #eee; /* Borda bem suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra mais leve */
+    overflow: hidden;
     transition: transform 0.3s ease;
 }
 
 .card-produto-novo:hover {
-    transform: translateY(-3px); 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Coluna da Imagem (Esquerda) */
+/* --- IMAGEM (Agora fica em cima) --- */
 .card-imagem {
-    width: 40%; /* 40% da largura total do card */
-    display: flex; /* Centraliza a imagem */
+    width: 100%; /* Ocupa toda a largura */
+    height: 250px; /* Altura fixa para alinhar as imagens */
+    padding: 20px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    background-color: #fff; /* Garante fundo branco */
 }
 
 .card-imagem img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
+    max-width: 90%;
+    max-height: 100%;
+    object-fit: contain; /* Garante que o drone apareça inteiro */
 }
 
-/* Coluna do Conteúdo (Direita) */
+/* --- CONTEÚDO (Agora fica embaixo) --- */
 .card-conteudo {
-    width: 60%; /* 60% da largura total do card */
-    padding: 30px;
-    padding-left: 45px; /* Espaço para a barra lateral */
+    width: 100%;
+    padding: 25px 30px; /* Mais espaço interno */
     position: relative;
+    
+    /* Garante que o conteúdo ocupe o resto do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; 
 }
 
-/* --- DESTAQUE VERTICAL COLORIDO (A barra ao lado do título) --- */
+/* --- A BARRA COLORIDA LATERAL --- */
+/* Ajustada para ficar ao lado do texto, como na foto */
 .card-conteudo::before {
     content: '';
     position: absolute;
-    top: 30px;
-    left: 20px; /* Posição da barra */
-    width: 5px;
-    height: 30px; /* Altura para alinhar com o título */
+    top: 28px; /* Alinhado com o título */
+    left: 0;   /* Colado na borda esquerda */
+    width: 4px;
+    height: 40px; /* Altura da barra */
 }
 
-/* --- Cores da Barra de Destaque --- */
-.secao-categoria.verde .card-conteudo::before {
-    background-color: #28a745; 
-}
-.secao-categoria.vermelho .card-conteudo::before {
-    background-color: #dc3545; 
-}
-.secao-categoria.cinza .card-conteudo::before {
-    background-color: #6c757d; 
-}
-
-/* Título, Descrição e Preço */
+/* Título */
 .titulo-drone {
-    font-size: 1.8em;
-    margin-top: 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #333;
     margin-bottom: 10px;
-    font-weight: 700;
-    color: #1a1a1a;
+    line-height: 1.2;
 }
 
+/* Descrição */
 .descricao {
+    font-size: 0.9rem;
     color: #666;
-    font-size: 0.95em;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-.preco {
-    font-size: 1.5em;
-    color: #000;
-    font-weight: 700;
     margin-bottom: 20px;
+    line-height: 1.5;
+    
+    /* Limita o texto a 3 linhas para não quebrar o layout */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-/* --- CONTAINER DOS BOTÕES (para alinhá-los lado a lado) --- */
+/* Preço */
+.preco {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 25px;
+    margin-top: auto; /* Empurra o preço para perto dos botões */
+}
+
+/* --- BOTÕES --- */
 .botoes-produto {
     display: flex;
-    gap: 15px; /* Espaço entre os dois botões */
-    margin-top: 25px; /* Empurra os botões para baixo */
+    gap: 10px;
+    margin-top: 0;
 }
 
-/* --- BOTÃO 1: DETALHES (Estilo Clean/Secundário) --- */
+/* Botão Detalhes (Cinza/Outline) */
 .btn-detalhes-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    
-    /* Estilo Secundário: Fundo Transparente, Borda Colorida */
+    flex: 1; /* Ocupa metade */
+    padding: 12px;
     background: transparent;
-    border: 2px solid #6c757d; /* Borda cinza suave */
-    color: #6c757d;
-    
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none; /* Remove sublinhado do link <a> */
-    font-size: 0.9em;
-    gap: 8px;
-}
-
-.btn-detalhes-info:hover {
-    background: #6c757d;
-    color: white;
-}
-
-/* --- BOTÃO 2: COMPRAR (Estilo Primário/Ação) --- */
-.btn-comprar-acao {
+    border: 1px solid #ccc;
+    color: #555;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 15px;
-    
-    color: white; /* Cor do texto sempre branca */
-    
-    font-weight: bold;
+    gap: 5px;
+}
+
+/* Botão Comprar (Verde/Sólido) */
+.btn-comprar-acao {
+    flex: 1; /* Ocupa a outra metade */
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s ease;
-    font-size: 0.9em;
-    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 /* --- Mapeamento de Cores por Categoria --- */
@@ -229,7 +234,7 @@
 
 /* 1. O seu Card de Produto se torna um Swiper Slide */
 .card-produto-novo.swiper-slide {
-    width: 600px !important; /* Deve ser igual ao .card-produto-novo */
+    width: 500px !important; /* Deve ser igual ao .card-produto-novo */
     flex-shrink: 0;
 }
 

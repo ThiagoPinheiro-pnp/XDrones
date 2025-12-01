@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/contato.css">
 </head>
 
 <body>
@@ -17,29 +18,30 @@
     <div data-include="components/header.html"></div>
 
     <main>
-        <section class="contato">
-            <h2>Entre em Contato</h2>
-            <p>Tem alguma dúvida? Mande uma mensagem para nós!</p>
+        <section class="contato-bg">
+            <div class="container-contato">
+                <h2>Entre em Contato</h2>
+                <p>Tem alguma dúvida? Mande uma mensagem para nós!</p>
 
-            <form class="contato-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! (Simulação)');">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                <form class="contato-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
 
-                <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar?" rows="5" required></textarea>
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar?" rows="5" required></textarea>
 
-                <button type="submit" class="btn">Enviar</button>
-            </form>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
         </section>
     </main>
 
     <div data-include="components/footer.html"></div>
 
     <script src="assets/js/ui.js"></script>
-
     <script src="assets/js/cart.js"></script>
 
     <script>
@@ -58,5 +60,4 @@
         });
     </script>
 </body>
-
 </html>
