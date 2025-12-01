@@ -1,44 +1,51 @@
 [
     {
         "id": 1,
-        "nome": "Fone Bluetooth",
-        "preco": 89.90,
-        "imagem": "assets/img/Log-1_com_imagem.png"
+        "nome": "DJI AGRAS T25 P",
+        "preco": 15500.00,
+        "imagem": "assets/img/DJI-AGRAS.png", 
+        "categoria": "agricultura", 
+        "descricao": "O drone DJI Agras T25P mantém seu design compacto e dobrável, apresentando pulverização de 20 kg, um sistema de distribuição de parafuso de alta precisão de 25 kg atualizado 4.0, e Sistema de Segurança 3.0."
     },
     {
         "id": 2,
-        "nome": "Relógio Digital",
-        "preco": 69.90,
-        "imagem": "assets/img/Log-1_com_imagem.png"
+        "nome": "MAVIC 3M",
+        "preco": 9800.00,
+        "imagem": "assets/img/MAVIC-3M.png", 
+        "categoria": "industria", 
+        "descricao": "O MAVIC 3M é um drone compacto e potente, perfeito para mapeamento aéreo e monitoramento de alta precisão, ideal para profissionais que necessitam de agilidade e qualidade nas operações."
     },
     {
         "id": 3,
-        "nome": "Camiseta Premium",
-        "preco": 49.90,
-        "imagem": "assets/img/Log-1_com_imagem.png"
+        "nome": "NAURU 100D",
+        "preco": 25000.00,
+        "imagem": "assets/img/NAURU-100D.png", 
+        "categoria": "seguranca", 
+        "descricao": "O Nauru 100D redefine o escopo operacional de missões militares. Com inteligência de alto nível, precisão inigualável e sistema indetectável, este drone é uma plataforma essencial para vigilância, reconhecimento e aquisição de alvos, e à interceptação…"
     },
     {
         "id": 4,
-        "nome": "Camiseta Premium",
-        "preco": 49.90,
-        "imagem": "assets/img/Log-1_com_imagem.png"
+        "nome": "DJI AGRAS T70 P",
+        "preco": 25000.00,
+        "imagem": "assets/img/DJI-AGRAS-T70-P.png", 
+        "categoria": "agricultura", 
+        "descricao": "O drone agrícola DJI Agras T70P foi recentemente atualizado para suportar pulverização e dispersão em vários cenários operacionais, com uma capacidade máxima de carga de 70 kg."
+    }
+    ,
+    {
+        "id": 5,
+        "nome": "DJI AGRAS T100",
+        "preco": 25000.00,
+        "imagem": "assets/img/DJI-AGRAS-T100.png", 
+        "categoria": "agricultura", 
+        "descricao": "O Drone Agrícola T100, uma criação inovadora que levou doze anos para ser desenvolvida, possui uma carga máxima de 100 kg. Sua eficiência operacional é dobrada, suportando múltiplos cenários de aplicação, incluindo pulverização e dispersão."
     },
     {
         "id": 5,
-        "nome": "Camiseta Premium",
-        "preco": 49.90,
-        "imagem": "assets/img/Log-1_com_imagem.png"
-    },
-    {
-        "id": 6,
-        "nome": "Camiseta Premium",
-        "preco": 49.90,
-        "imagem": "assets/img/Log-1_com_imagem.png"
-    },
-    {
-        "id": 7,
-        "nome": "Camiseta Premium",
-        "preco": 49.90,
-        "imagem": "assets/img/Log-1_com_imagem.png"
+        "nome": "DJI AGRAS T100",
+        "preco": 25000.00,
+        "imagem": "assets/img/DJI-AGRAS-T100.png", 
+        "categoria": "agricultura", 
+        "descricao": "O Drone Agrícola T100, uma criação inovadora que levou doze anos para ser desenvolvida, possui uma carga máxima de 100 kg. Sua eficiência operacional é dobrada, suportando múltiplos cenários de aplicação, incluindo pulverização e dispersão."
     }
 ]

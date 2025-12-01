@@ -3,40 +3,85 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Produtos</title>
+    <title>Produtos XDRONES</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/produtos.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
 
-    <!-- HEADER -->
     <div data-include="components/header.html"></div>
 
-    <!-- MAIN -->
-    <main>
-        <section class="produtos">
-            <h2>Produtos Disponíveis</h2>
-            <div id="lista-produtos" class="produtos-container"></div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <div data-include="components/footer.html"></div>
-
-
+    <main class="container-produtos">
     
+    <section id="agricultura" class="secao-categoria verde">
+        
+        <div class="header-categoria-flex"> 
+            <h2 class="titulo-categoria">Agricultura</h2>
+            <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+        </div>
+        
+        <div class="swiper linha-produtos-agricultura"> 
+            
+            <div id="produtos-agricultura" class="swiper-wrapper">
+                </div>
 
-    <!-- JS -->
-    <script src="assets/js/products.js"></script>
+            <div class="swiper-button-next swiper-next-agricultura"></div>
+            <div class="swiper-button-prev swiper-prev-agricultura"></div>
+            
+        </div>
+    </section>
+
+    <hr class="separador">
+
+    <section id="industria" class="secao-categoria vermelho">
+        
+        <div class="header-categoria-flex">
+            <h2 class="titulo-categoria">Indústria</h2>
+            <div class="icon"><i class="fa-solid fa-gears"></i></div>
+        </div>
+
+        <div class="swiper linha-produtos-industria">
+            <div id="produtos-industria" class="swiper-wrapper">
+                </div>
+            
+            <div class="swiper-button-next swiper-next-industria"></div>
+            <div class="swiper-button-prev swiper-prev-industria"></div>
+        </div>
+    </section>
+
+    <hr class="separador">
+
+    <section id="seguranca" class="secao-categoria cinza">
+        
+        <div class="header-categoria-flex">
+            <h2 class="titulo-categoria">Segurança e Defesa</h2>
+            <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+
+        <div class="swiper linha-produtos-seguranca">
+            <div id="produtos-seguranca" class="swiper-wrapper">
+                </div>
+            
+            <div class="swiper-button-next swiper-next-seguranca"></div>
+            <div class="swiper-button-prev swiper-prev-seguranca"></div>
+        </div>
+    </section>
+
+</main>
+
+    <div data-include="components/footer.html"></div>
+    
+    <script src="assets/js/products.js"></script> 
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/ui.js"></script>
 
-    <!-- Script para carregar header e footer -->
     <script>
         function loadHTML(selector, url) {
             fetch(url)
@@ -53,6 +98,9 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
+<script src="assets/js/carousel.js"></script>
+    
 </body>
 
 </html>

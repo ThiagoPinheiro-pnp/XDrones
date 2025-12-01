@@ -1,0 +1,253 @@
+/* --- LAYOUT GERAL --- */
+.container-produtos {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.secao-categoria {
+    margin-bottom: 60px;
+}
+
+.separador {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 40px 0;
+}
+
+/* --- CABEÇALHO DA CATEGORIA (Título + Ícone) --- */
+.header-categoria-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.titulo-categoria {
+    font-size: 2.5em;
+    color: #1a1a1a;
+    font-weight: 800; /* Mais peso para o título, como no exemplo */
+    padding-bottom: 0; 
+    margin-bottom: 0;  
+}
+
+.icon i {
+    font-size: 2.5rem; 
+    line-height: 1;    
+    margin: 0; 
+}
+
+/* --- Cores dos Ícones --- */
+.secao-categoria.verde .icon i {
+    color: #28a745; /* Verde para Agricultura */
+}
+.secao-categoria.vermelho .icon i {
+    color: #dc3545; /* Vermelho para Indústria */
+}
+.secao-categoria.cinza .icon i {
+    color: #6c757d; /* Cinza para Segurança */
+}
+
+/* ========================================= */
+/* --- NOVO ESTILO: CARD DE PRODUTO MODERN --- */
+/* ========================================= */
+
+.card-produto-novo {
+    background: #fff;
+    border: 1px solid #e0e0e0; /* Borda suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    overflow: hidden; 
+    transition: transform 0.3s ease;
+}
+
+.card-produto-novo:hover {
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Coluna da Imagem (Esquerda) */
+.card-imagem {
+    width: 40%; /* 40% da largura total do card */
+    display: flex; /* Centraliza a imagem */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card-imagem img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Coluna do Conteúdo (Direita) */
+.card-conteudo {
+    width: 60%; /* 60% da largura total do card */
+    padding: 30px;
+    padding-left: 45px; /* Espaço para a barra lateral */
+    position: relative;
+}
+
+/* --- DESTAQUE VERTICAL COLORIDO (A barra ao lado do título) --- */
+.card-conteudo::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 20px; /* Posição da barra */
+    width: 5px;
+    height: 30px; /* Altura para alinhar com o título */
+}
+
+/* --- Cores da Barra de Destaque --- */
+.secao-categoria.verde .card-conteudo::before {
+    background-color: #28a745; 
+}
+.secao-categoria.vermelho .card-conteudo::before {
+    background-color: #dc3545; 
+}
+.secao-categoria.cinza .card-conteudo::before {
+    background-color: #6c757d; 
+}
+
+/* Título, Descrição e Preço */
+.titulo-drone {
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.descricao {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.preco {
+    font-size: 1.5em;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* --- CONTAINER DOS BOTÕES (para alinhá-los lado a lado) --- */
+.botoes-produto {
+    display: flex;
+    gap: 15px; /* Espaço entre os dois botões */
+    margin-top: 25px; /* Empurra os botões para baixo */
+}
+
+/* --- BOTÃO 1: DETALHES (Estilo Clean/Secundário) --- */
+.btn-detalhes-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    
+    /* Estilo Secundário: Fundo Transparente, Borda Colorida */
+    background: transparent;
+    border: 2px solid #6c757d; /* Borda cinza suave */
+    color: #6c757d;
+    
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove sublinhado do link <a> */
+    font-size: 0.9em;
+    gap: 8px;
+}
+
+.btn-detalhes-info:hover {
+    background: #6c757d;
+    color: white;
+}
+
+/* --- BOTÃO 2: COMPRAR (Estilo Primário/Ação) --- */
+.btn-comprar-acao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    
+    color: white; /* Cor do texto sempre branca */
+    
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 0.9em;
+    gap: 8px;
+}
+
+/* --- Mapeamento de Cores por Categoria --- */
+
+/* 1. Agricultura (Verde) */
+.secao-categoria.verde .btn-comprar-acao {
+    background: #28a745; /* Cor base: Verde */
+}
+
+.secao-categoria.verde .btn-comprar-acao:hover {
+    background: #1e7e34; /* Cor mais escura no hover */
+}
+
+/* 2. Indústria (Vermelho) */
+.secao-categoria.vermelho .btn-comprar-acao {
+    background: #dc3545; /* Cor base: Vermelho */
+}
+
+.secao-categoria.vermelho .btn-comprar-acao:hover {
+    background: #c82333; /* Cor mais escura no hover */
+}
+
+/* 3. Segurança e Defesa (Cinza) */
+.secao-categoria.cinza .btn-comprar-acao {
+    background: #6c757d; /* Cor base: Cinza */
+}
+
+.secao-categoria.cinza .btn-comprar-acao:hover {
+    background: #5a6268; /* Cor mais escura no hover */
+}
+/* --- SWIPER CARROSSEL REGRAS BÁSICAS --- */
+
+/* 1. Substitui a linha-produtos antiga. O SwiperJS usa a classe .swiper */
+/* Remove o overflow: auto e o display: flex para evitar conflitos com o Swiper */
+.linha-produtos-agricultura,
+.linha-produtos-industria,
+.linha-produtos-seguranca {
+    position: relative; /* Essencial para que as setas fiquem relativas a este container */
+    padding: 0 30px; /* Adiciona padding interno para que as setas fiquem visíveis na borda */
+}
+
+
+/* --- SWIPER CARROSSEL REGRAS BÁSICAS --- */
+
+/* 1. O seu Card de Produto se torna um Swiper Slide */
+.card-produto-novo.swiper-slide {
+    width: 600px !important; /* Deve ser igual ao .card-produto-novo */
+    flex-shrink: 0;
+}
+
+
+/* --- ESTILO DAS SETAS SWIPER --- */
+
+/* Ajusta a cor e o fundo das setas */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000 !important;            /* cor da seta */
+    background: none;       /* sem fundo */
+    width: 20px;            /* tamanho padrão */
+    height: 20px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 35px !important;        /* tamanho da seta */
+    font-weight: bold;      /* deixa a seta mais forte */
+     right: -30px !important;
+}
