@@ -1,0 +1,121 @@
+/* ==================================== */
+/* ESTILOS GERAIS PARA INTRODUÇÃO (TOPO) */
+/* ==================================== */
+.setor-introducao {
+    /* Define a altura e centraliza o texto */
+    height: 400px; /* Altura padrão para o cabeçalho do setor */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o texto à esquerda */
+    
+    /* Configurações da Imagem de Fundo */
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; /* Cor do texto branco para contraste */
+    padding: 0 5%;
+    position: relative;
+}
+
+/* Efeito de Overlay (degrade escuro) para melhorar a leitura do texto */
+.setor-introducao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Gradiente que vai de preto transparente (embaixo) para mais transparente (em cima) */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1; /* Coloca o overlay acima da imagem */
+}
+
+.setor-introducao h1,
+.setor-introducao p {
+    z-index: 2; /* Coloca o texto acima do overlay */
+    max-width: 800px;
+}
+
+.setor-introducao h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+/* ==================================== */
+/* DEFINIÇÃO DAS IMAGENS DE FUNDO */
+/* ==================================== */
+
+/* Você precisará ter essas imagens no seu diretório assets/images/ */
+
+.agricultura-header {
+    background-image: url('../img/drone-banner-agricultura.jpg');
+}
+
+.industria-header {
+    background-image: url('../img/drone-banner-industria.jpg');
+}
+
+.seguranca-header {
+    background-image: url('../img/drone-banner-seguranca.jpg');
+}
+
+/* ==================================== */
+/* ESTILOS DE CONTEÚDO PRINCIPAL */
+/* ==================================== */
+
+.setor-conteudo {
+    max-width: 1000px; /* Largura máxima para o conteúdo de texto */
+    margin: 40px auto; /* Centraliza a seção e adiciona espaçamento */
+    padding: 0 5%;
+}
+
+.setor-conteudo h2 {
+    color: #007bff; /* Ou a cor primária do seu site (pode ser o verde da XDRONES) */
+    margin-top: 30px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.setor-conteudo ul {
+    list-style: none;
+    padding: 0;
+}
+
+.setor-conteudo ul li {
+    background: url('caminho/para/o/icone.svg') no-repeat left center; /* Opcional: ícone de checkmark */
+    padding-left: 25px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.cta-btn {
+    /* Estilo do botão de ação, deve ser coerente com o btn do seu form de contato */
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #28a745; /* Exemplo: um verde vibrante */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #1e7e34;
+}
+
+/* ==================================== */
+/* RESPONSIVIDADE (Para telas menores) */
+/* ==================================== */
+@media (max-width: 768px) {
+    .setor-introducao {
+        height: 300px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .setor-introducao h1 {
+        font-size: 2em;
+    }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspeção Industrial e Mapeamento | XDRONES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/setor.css"> </head>
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <section class="setor-introducao industria-header">
+            <h1>Inspeção e Indústria 4.0</h1>
+            <p>Mapeamento topográfico e monitoramento ambiental preciso. Transforme a manutenção industrial e o planejamento de obras.</p>
+        </section>
+
+        <section class="setor-conteudo">
+            <h2>Inspeção de Infraestrutura Crítica</h2>
+            <p>Realizamos inspeções visuais e termográficas em tempo recorde, eliminando a necessidade de métodos perigosos e caros.</p>
+            <ul>
+                <li>Inspeção de linhas de transmissão, torres de celular e turbinas eólicas.</li>
+                <li>Monitoramento termal de painéis solares e equipamentos.</li>
+                <li>Relatórios de corrosão e danos estruturais em pontes e barragens.</li>
+            </ul>
+
+            <h2>Topografia e Mapeamento 3D</h2>
+            <p>Gere ortomosaicos e modelos digitais de superfície (MDS) com precisão centimétrica para engenharia e construção civil.</p>
+            <ul>
+                <li>Cálculo preciso de volume de terraplenagem e estoque.</li>
+                <li>Acompanhamento de obras e monitoramento de áreas de mineração.</li>
+                <li>Geração de nuvens de pontos detalhadas para BIM.</li>
+            </ul>
+            
+            <a href="produtos.html" class="btn cta-btn">Encontre o Drone perfeito para te ajudar!</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script>
+        function loadHTML(selector, url) { /* ... código de loadHTML ... */ }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+            loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>

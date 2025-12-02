@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segurança, Defesa e Resposta Rápida | XDRONES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/setor.css"> </head>
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <section class="setor-introducao seguranca-header">
+            <h1>Segurança e Defesa</h1>
+            <p>Desenvolvemos drones e serviços para operações de vigilância, reconhecimento e monitoramento estratégico em ambientes hostis.</p>
+        </section>
+
+        <section class="setor-conteudo">
+            <h2>Vigilância Tática e Inteligência</h2>
+            <p>Drones com autonomia de longo alcance e equipamentos de visão noturna (IR/Térmica) para missões críticas.</p>
+            <ul>
+                <li>Patrulhamento de grandes áreas e fronteiras.</li>
+                <li>Monitoramento em tempo real com feeds criptografados.</li>
+                <li>Mapeamento tático rápido de zonas de conflito ou desastre.</li>
+            </ul>
+
+            <h2>Busca e Salvamento (SAR)</h2>
+            <p>Nossa tecnologia acelera a localização de indivíduos em situações de emergência, salvando vidas.</p>
+            <ul>
+                <li>Câmeras termográficas para localização em escombros ou florestas densas.</li>
+                <li>Drones resistentes a condições climáticas adversas.</li>
+                <li>Auxílio na coordenação de equipes de resgate em campo.</li>
+            </ul>
+            
+            <a href="produtos.html" class="btn cta-btn">Encontre o Drone perfeito para te ajudar!</a>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script>
+        function loadHTML(selector, url) { /* ... código de loadHTML ... */ }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+            loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>

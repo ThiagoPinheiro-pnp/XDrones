@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultura de Precisão | XDRONES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/setor.css"> </head>
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main>
+        <section class="setor-introducao agricultura-header">
+            <h1>Agricultura de Precisão</h1>
+            <p>Soluções avançadas para o produtor e indústrias do agronegócio. Otimize sua produção e utilize recursos de forma inteligente.</p>
+        </section>
+
+        <section class="setor-conteudo">
+            <h2>Monitoramento e Análise de Safras</h2>
+            <p>Utilizamos câmeras multiespectrais e tecnologia de IA para identificar com precisão a saúde das plantas, antecipando problemas.</p>
+            <ul>
+                <li>Detecção precoce de pragas e doenças.</li>
+                <li>Mapeamento da variação de biomassa e vigor vegetativo.</li>
+                <li>Relatórios detalhados de índice de vegetação (NDVI).</li>
+            </ul>
+
+            <h2>Otimização de Insumos</h2>
+            <p>Nossos drones pulverizadores aplicam defensivos e fertilizantes apenas onde são necessários.</p>
+            <ul>
+                <li>Redução de até 30% no uso de água e produtos químicos.</li>
+                <li>Velocidade e precisão na aplicação.</li>
+                <li>Mapeamento de falhas de plantio e solo.</li>
+            </ul>
+            
+            <a href="produtos.html" class="btn cta-btn">Encontre o Drone perfeito para te ajudar!</a>
+
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script>
+        function loadHTML(selector, url) { /* ... código de loadHTML ... */ }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+            loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>
