@@ -1,27 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using XDronesAPI.Data;
+using XDronesAPI.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// 1. Configurar Conexão MySQL
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 builder.Services.AddControllers();
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// --- ADICIONADO: Configuração do serviço de CORS ---
 builder.Services.AddCors(options =>
 {
-    // Criamos uma política chamada "PermitirTudo" para desenvolvimento
-    options.AddPolicy("PermitirTudo",
-        policy =>
-        {
-            policy.AllowAnyOrigin()  // Aceita pedidos de qualquer lugar (do teu frontend)
-                  .AllowAnyMethod()  // Aceita GET, POST, PUT, DELETE, etc.
-                  .AllowAnyHeader(); // Aceita quaisquer cabeçalhos
-        });
+    options.AddPolicy("PermitirTudo", policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
 });
-// --------------------------------------------------
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -29,39 +30,49 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// --- ADICIONADO: Ativar o Middleware de CORS ---
-// Importante: Deve estar antes dos endpoints (MapGet, etc.)
 app.UseCors("PermitirTudo");
-// ----------------------------------------------
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
-// Não te esqueças de adicionar o teu Controller de Produtos aqui também,
-// senão a rota /api/products não vai funcionar.
 app.MapControllers();
 
-app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+// 5. CRIAÇÃO AUTOMÁTICA DO BANCO E DADOS INICIAIS (SEEDER ATUALIZADO)
+using (var scope = app.Services.CreateScope())
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        
+        // Garante que o banco e tabelas existem
+        context.Database.EnsureCreated();
+
+        // 5.1 Seeding de PRODUTOS
+        if (!context.Produtos.Any())
+        {
+            context.Produtos.AddRange(
+                new Product { Nome = "DJI Mini 4 Pro", Preco = 4590.00m, Imagem = "assets/img/drone-card-agricultra.png", Categoria = "Agricultura" },
+                new Product { Nome = "DJI Air 3", Preco = 8290.00m, Imagem = "assets/img/drone-card-monitoramento.jpeg", Categoria = "Industria" },
+                new Product { Nome = "DJI Mavic 3", Preco = 12590.00m, Imagem = "assets/img/drone-card-defesa.jpg", Categoria = "Defesa" }
+            );
+            context.SaveChanges(); // Salva produtos primeiro
+        }
+
+        // 5.2 Seeding de USUÁRIOS (NOVO!)
+        if (!context.Usuarios.Any())
+        {
+            context.Usuarios.Add(new Usuario 
+            { 
+                Nome = "Administrador", 
+                Email = "admin@xdrones.com", 
+                Senha = "123", // Senha simples para teste
+                Role = "Admin" 
+            });
+            context.SaveChanges(); // Salva o usuário
+            Console.WriteLine("--- Usuário ADMIN criado: admin@xdrones.com / 123 ---");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro ao criar o banco de dados: {ex.Message}");
+    }
 }
+
+app.Run();

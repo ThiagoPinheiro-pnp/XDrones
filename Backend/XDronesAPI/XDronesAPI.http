@@ -1,4 +1,4 @@
-@XDronesAPI_HostAddress = http://localhost:5258
+@XDronesAPI_HostAddress = http://localhost:5124
 
 GET {{XDronesAPI_HostAddress}}/weatherforecast/
 Accept: application/json
