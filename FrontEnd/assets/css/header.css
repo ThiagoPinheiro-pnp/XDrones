@@ -90,6 +90,8 @@
 ----------------------------------*/
 .menu {
     /* O menu já está na coluna do meio, não precisa de alinhamento extra */
+    margin-right: auto; 
+    padding-left: 20px;
     display: flex;
     gap: 25px;
     justify-content: center; /* Garante que os links ficam no meio do container do menu */
@@ -111,38 +113,45 @@
 }
 
 /* ---------------------------------
-   5. ÍCONE DO CARRINHO
-----------------------------------*/
-.cart-icon {
-    /* Alinha o carrinho à direita na sua coluna da grelha */
-    justify-self: end;
+   5. ÍCONES DE AÇÃO (GRUPO)
+   ----------------------------------*/
 
+/* NOVO: Container para Login e Carrinho. Ficará na 3ª coluna do Grid. */
+.header-acoes {
+    /* Alinha o grupo à direita na sua coluna da grelha */
+    justify-self: end; 
+    
+    /* CRUCIAL: Usa Flexbox para alinhar os ícones (Login e Carrinho) 
+       horizontalmente DENTRO desta célula do Grid. */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre o ícone de Login e o Carrinho */
+}
+
+.user-icon,
+.cart-icon {
+    /* Remove o justify-self que não é mais necessário aqui */
+    
     font-size: 22px;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s;
-    display: flex;
+    display: flex; /* Garante que o ícone interno esteja centrado, se houver texto */
     align-items: center;
+    /* Remove padding/margin lateral desnecessário, pois o 'gap' faz o espaçamento */
 }
 
+/* Garante que o hover se aplique corretamente */
+.user-icon:hover,
 .cart-icon:hover {
     transform: scale(1.1);
     color: #e63946;
 }
 
-/* Responsividade para telas menores (Exemplo) */
-@media (max-width: 900px) {
-    .topo {
-        padding: 15px 20px; /* Menos padding lateral */
-    }
-    .menu {
-        gap: 15px; /* Links mais juntos */
-    }
-    .logo {
-        font-size: 24px;
-    }
-    .menu a {
-        font-size: 13px;
-    }
+/* Opcional: Se quiser que eles fiquem brancos quando o header for transparente */
+.topo.transparente .user-icon,
+.topo.transparente .cart-icon {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }

@@ -5,6 +5,8 @@
 // 1. CARREGAR DADOS
 // Tenta pegar o carrinho salvo. Se não existir, cria um array vazio.
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// normaliza: garante qty para itens existentes (compatibilidade com versões antigas)
+cart = cart.map(item => ({ ...item, qty: item.qty || 1 }));
 
 // 2. SALVAR DADOS
 function saveCart() {
@@ -14,8 +16,15 @@ function saveCart() {
 // 3. ADICIONAR AO CARRINHO
 // Chamado pelo products.js
 function addCart(nome, preco, img) {
-    // Adiciona o objeto ao array
-    cart.push({ nome, preco, img });
+    // procura item igual e add objeto ao array 
+    // (identifique por nome; se tiver id, use id)
+    const existing = cart.find(i => i.nome === nome);
+    if (existing) {
+        existing.qty = (existing.qty || 1) + 1;
+    } else {
+        cart.push({ nome, preco, img, qty: 1 });
+    }
+
     saveCart();
     
     // Atualiza a interface visual
@@ -23,6 +32,9 @@ function addCart(nome, preco, img) {
     
     // Abre a gaveta para mostrar o feedback ao usuário
     abrirCarrinho();
+
+    //Contagem de produtos da mesma espécie
+    updateCartCount();
 }
 
 // 4. REMOVER ITEM
@@ -37,6 +49,36 @@ function removeCartItem(index) {
     if (window.location.pathname.includes("carrinho.html")) {
         loadCartPage();
     }
+
+    updateCartCount();
+}
+
+function changeQty(index, delta) {
+    const item = cart[index];
+    if (!item) return;
+
+    item.qty = (item.qty || 1) + delta;
+
+    if (item.qty <= 0) {
+        // remove totalmente se zerar
+        cart.splice(index, 1);
+    }
+
+    saveCart();
+    renderCartSidebar();
+
+    if (window.location.pathname.includes("carrinho.html")) {
+        loadCartPage();
+    }
+
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const countSpan = document.getElementById("cart-count");
+    if (!countSpan) return;
+    const totalQty = cart.reduce((s, it) => s + (it.qty || 1), 0);
+    countSpan.textContent = totalQty;
 }
 
 /* =============================================================
@@ -47,24 +89,32 @@ function removeCartItem(index) {
 function renderCartSidebar() {
     const itemsDiv = document.getElementById("cart-items-sidebar");
     const totalSpan = document.getElementById("cart-total-sidebar");
-    
-    // Segurança: Só tenta rodar se o footer já tiver carregado a gaveta
+
     if (!itemsDiv || !totalSpan) return;
 
-    itemsDiv.innerHTML = ""; // Limpa o conteúdo atual
+    itemsDiv.innerHTML = "";
     let total = 0;
 
     if (cart.length === 0) {
         itemsDiv.innerHTML = "<p style='text-align:center; padding:20px; color:#666;'>Seu carrinho está vazio.</p>";
     } else {
         cart.forEach((item, i) => {
-            total += item.preco;
+            const qty = item.qty || 1;
+            total += item.preco * qty;
             itemsDiv.innerHTML += `
             <div class="cart-item">
                 <img src="${item.img}" alt="${item.nome}">
                 <div class="cart-info">
                     <strong>${item.nome}</strong>
-                    <p class="cart-price">R$ ${item.preco.toFixed(2)}</p>
+                    <p class="cart-price">
+                     ${item.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                     </p>
+
+                    <div class="cart-qty">
+                        <button class="qty-btn" onclick="changeQty(${i}, -1)" aria-label="Diminuir">−</button>
+                        <span class="qty">${qty}</span>
+                        <button class="qty-btn" onclick="changeQty(${i}, 1)" aria-label="Aumentar">+</button>
+                    </div>
                 </div>
                 <button onclick="removeCartItem(${i})" title="Remover" style="color:#e63946; border:none; background:none; cursor:pointer; font-size:20px; font-weight:bold;">
                     &times;
@@ -73,7 +123,10 @@ function renderCartSidebar() {
         });
     }
 
-    totalSpan.textContent = "R$ " + total.toFixed(2);
+    totalSpan.textContent = total.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+});
 }
 
 // --- FUNÇÕES DE ABRIR/FECHAR (ATUALIZADAS COM NOVOS NOMES) ---
@@ -141,7 +194,7 @@ function loadCartPage() {
     const itemsDiv = document.getElementById("cartItems");
     const totalSpan = document.getElementById("cartTotal");
 
-    if (!itemsDiv) return; 
+    if (!itemsDiv) return;
 
     let total = 0;
     itemsDiv.innerHTML = "";
@@ -150,22 +203,33 @@ function loadCartPage() {
         itemsDiv.innerHTML = "<p>Seu carrinho está vazio.</p>";
     } else {
         cart.forEach((item, i) => {
-            total += item.preco;
+            const qty = item.qty || 1;
+            total += item.preco * qty;
             itemsDiv.innerHTML += `
             <div class="cart-item">
                 <img src="${item.img}" width="80">
                 <div>
                     <strong>${item.nome}</strong>
-                    <p>R$ ${item.preco.toFixed(2)}</p>
+                                <p>
+            ${item.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} 
+            x ${qty} = 
+            ${(item.preco * qty).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+            </p>
                 </div>
-                <button onclick="removeCartItem(${i})" style="margin-left:auto; cursor:pointer;">🗑️ Remover</button>
+                <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+                    <button onclick="changeQty(${i}, -1)" style="cursor:pointer;">−</button>
+                    <span>${qty}</span>
+                    <button onclick="changeQty(${i}, 1)" style="cursor:pointer;">+</button>
+                    <button onclick="removeCartItem(${i})" style="cursor:pointer;">🗑️</button>
+                </div>
             </div>`;
         });
     }
 
-    if (totalSpan) {
-        totalSpan.textContent = "R$ " + total.toFixed(2);
-    }
+    totalSpan.textContent = total.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+});
 }
 
 // Garante que o CSS do carrinho seja carregado

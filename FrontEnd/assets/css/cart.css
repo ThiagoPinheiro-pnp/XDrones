@@ -96,7 +96,7 @@
 
 .cart-price {
     font-weight: bold;
-    color: #0057ff;
+    color: #000000;
     margin: 0;
 }
 
@@ -118,7 +118,7 @@
 .btn-pay {
     width: 100%;
     padding: 14px;
-    background: #0057ff;
+    background: #e63946;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -129,7 +129,7 @@
 }
 
 .btn-pay:hover {
-    background: #0046cc;
+    background: #e63946;
 }
 
 /* ... (Mantenha o CSS do .cart-sidebar igual) ... */
@@ -192,6 +192,30 @@
 .total-area h3 {
     margin-bottom: 20px;
     font-size: 1.5rem;
+}
+
+.cart-qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.qty-btn {
+    width: 30px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.qty {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 600;
 }
 
 /* Responsividade para Telas Menores */

@@ -46,7 +46,9 @@ function carregarProdutos() {
                     <h3 class="titulo-drone">${produto.nome}</h3>
                     <p class="descricao">${produto.descricao || 'Um drone de alta performance e tecnologia de ponta.'}</p>
                     
-                    <p class="preco">R$ ${produto.preco.toFixed(2)}</p> 
+                        <p class="preco">
+        ${produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+        </p>
 
                     <div class="botoes-produto">
                 

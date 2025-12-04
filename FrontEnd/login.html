@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | XDRONES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/contato.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div data-include="components/header.html"></div>
+
+  <main>
+    <section class="login-section">
+      <div class="login-container">
+
+        <h2>Entrar na sua conta</h2>
+        <p>Acesse sua conta para continuar</p>
+
+        <form class="login-form" id="loginForm">
+
+          <label>Email</label>
+          <input type="email" placeholder="seu@email.com" required>
+
+          <label>Senha</label>
+          <input type="password" placeholder="Digite sua senha" required>
+
+          <button type="submit" class="btn">Entrar</button>
+
+          <div class="login-links">
+            <a href="#">Esqueceu a senha?</a>
+            <span>•</span>
+            <a href="cadastro.html"><p>Não tem conta? </p> Cadastre-se</a>
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <div data-include="components/footer.html"></div>
+
+  <script src="js/login.js"></script>
+
+  <script>
+        function loadHTML(selector, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector(selector).innerHTML = data;
+                })
+                .catch(err => console.error(err));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+            loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro | XDRONES</title>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/cart.css">
+  <link rel="stylesheet" href="assets/css/contato.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div data-include="components/header.html"></div>
+
+  <main>
+    <section class="login-section">
+      <div class="login-container">
+
+        <h2>Criar sua conta</h2>
+        <p>Preencha os dados para se cadastrar</p>
+
+<form class="login-form cadastro-steps" id="cadastroForm">
+
+  <!-- ABAS -->
+  <div class="cadastro-tabs">
+    <button type="button" class="tab active" onclick="trocarEtapa(1)">Conta</button>
+    <button type="button" class="tab" onclick="trocarEtapa(2)">Endereço</button>
+  </div>
+
+  <!-- ETAPA 1 -->
+  <div class="cadastro-etapa active" id="etapa1">
+    <label>Nome completo</label>
+    <input type="text" placeholder="Seu nome completo" required>
+
+    <label>Email</label>
+    <input type="email" placeholder="seu@email.com" required >
+
+    <label>Senha</label>
+    <input type="password" placeholder="Digite sua senha" required>
+
+    <label>Confirmar senha</label>
+    <input type="password" placeholder="Confirmar sua senha" required>
+
+    <button type="button" class="btn" onclick="trocarEtapa(2)">
+      Próxima etapa →
+    </button>
+  </div>
+
+  <!-- ETAPA 2 -->
+  <div class="cadastro-etapa" id="etapa2">
+
+    <label>CPF</label>
+    <input type="text" placeholder="000.000.000-00" required>
+
+    <label>CEP</label>
+    <input type="text" placeholder="00000-000" required>
+
+    <label>Número</label>
+    <input type="text" required>
+
+    <label>Referência</label>
+    <input type="text" placeholder="Próx. ao mercado">
+
+    <button type="submit" class="btn">
+      Finalizar cadastro
+    </button>
+
+  </div>
+
+  <div class="login-links">
+    <a href="login.html">Já tem conta? Entrar</a>
+  </div>
+
+</form>
+
+      </div>
+    </section>
+  </main>
+
+  <div data-include="components/footer.html"></div>
+
+  <script src="assets/js/cadastro.js"></script>
+
+  <script>
+    function loadHTML(selector, url) {
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector(selector).innerHTML = data;
+        })
+        .catch(err => console.error(err));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+      loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+    });
+  </script>
+
+</body>
+</html>
