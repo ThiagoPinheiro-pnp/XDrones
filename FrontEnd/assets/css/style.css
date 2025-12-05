@@ -46,7 +46,7 @@ p {
 /* 2. BOTÕES PADRÃO */
 .btn {
     padding: 12px 28px;
-    background: #0057ff;
+    background: #e63946;
     color: #fff;
     text-decoration: none;
     border-radius: 6px;
@@ -59,7 +59,7 @@ p {
 }
 
 .btn:hover {
-    background: #003fcc;
+    background: #fc707c62;
     transform: translateY(-2px);
 }
 
@@ -669,8 +669,167 @@ textarea {
 .cadastro-etapa.active {
     display: block;
 }
+/* =======================================================
+   PÁGINA CARRINHO LEGADO
+   ======================================================= */
+.carrinho-pagina {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+}
+.carrinho-pagina button, .btn {
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.carrinho-botoes .btn-secondary {
+    flex: 1;
+    max-width: 260px;          /* ✅ Evita botão muito largo */
+    text-align: center;
+    border: 1px solid #999;
+    padding: 16px 24px;
+    margin-top: 15px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    background: white;
+
+    white-space: nowrap;      /* ✅ Impede quebra de linha */
+    display: flex;            /* ✅ Centraliza texto */
+    align-items: center;
+    justify-content: center;
+}
+
+.carrinho-botoes .btn-secondary:hover {
+    border: 1px solid #999999ac;
+    color: #33333383;
+    transform: translateY(-2px);
+}
+
+.carrinho-botoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    margin-left: 65px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Agora padroniza TANTO o <a> quanto o <button> */
+.carrinho-botoes .btn,
+.carrinho-botoes .btn-secondary {
+    width: 260px;              /* ✅ Ambos com o mesmo tamanho */
+    padding: 16px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    text-align: center;
+
+    white-space: nowrap;      /* ✅ Nunca quebra linha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrinho-vazio {
+    margin-top: 10px;
+}
+
+/* Cabeçalho */
+.carrinho-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    font-weight: bold;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Produtos */
+.carrinho-produto {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 40px;
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid #eee;
+    gap: 15px;
+}
+
+/* Produto info */
+.produto-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.produto-info img {
+    width: 80px;
+}
+
+/* Quantidade */
+.produto-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.produto-quantidade button {
+    width: 30px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    color: #000;
+    margin-top: -4px;
+}
+
+
+/* Remover */
+.produto-remover .remove {
+    color:#e63946; 
+    border:none; 
+    background:none; 
+    cursor:pointer; 
+    font-size:20px; 
+    font-weight:bold;
+    margin-top: -4px;
+}
+
+/* Rodapé */
+.carrinho-rodape {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+
+/* Resumo */
+.carrinho-resumo {
+    width: 320px;
+}
+
+.carrinho-resumo .linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.carrinho-resumo .total {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
 
 @keyframes fade {
     from { opacity: 0; transform: translateX(10px); }
     to { opacity: 1; transform: translateX(0); }
 }
+

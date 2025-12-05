@@ -193,43 +193,79 @@ document.addEventListener('click', function(e) {
 function loadCartPage() {
     const itemsDiv = document.getElementById("cartItems");
     const totalSpan = document.getElementById("cartTotal");
+    const subtotalSpan = document.getElementById("subtotalSpan");
+    const descontoSpan = document.getElementById("descontoSpan");
 
-    if (!itemsDiv) return;
+    if (!itemsDiv || !totalSpan) return;
 
     let total = 0;
     itemsDiv.innerHTML = "";
 
     if (cart.length === 0) {
-        itemsDiv.innerHTML = "<p>Seu carrinho está vazio.</p>";
-    } else {
-        cart.forEach((item, i) => {
-            const qty = item.qty || 1;
-            total += item.preco * qty;
-            itemsDiv.innerHTML += `
-            <div class="cart-item">
-                <img src="${item.img}" width="80">
-                <div>
-                    <strong>${item.nome}</strong>
-                                <p>
-            ${item.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} 
-            x ${qty} = 
-            ${(item.preco * qty).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
-            </p>
+        itemsDiv.innerHTML = "<p class='carrinho-vazio'>Seu carrinho está vazio.</p>";
+        totalSpan.textContent = "R$ 0,00";
+        if (subtotalSpan) subtotalSpan.textContent = "R$ 0,00";
+        if (descontoSpan) descontoSpan.textContent = "R$ 0,00";
+        return;
+    }
+
+    cart.forEach((item, i) => {
+        const qty = item.qty || 1;
+        const totalItem = item.preco * qty;
+        total += totalItem;
+
+        itemsDiv.innerHTML += `
+            <div class="carrinho-produto">
+
+                <div class="produto-info">
+                    <img src="${item.img}">
+                    <div>
+                        <strong>${item.nome}</strong>
+                        <p>Produto fornecido e entregue por XDrones</p>
+                    </div>
                 </div>
-                <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
-                    <button onclick="changeQty(${i}, -1)" style="cursor:pointer;">−</button>
+
+                <div class="produto-entrega">
+                    a calcular
+                </div>
+
+                <div class="produto-preco">
+                    ${item.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                </div>
+
+                <div class="produto-quantidade">
+                    <button onclick="changeQty(${i}, -1)">−</button>
                     <span>${qty}</span>
-                    <button onclick="changeQty(${i}, 1)" style="cursor:pointer;">+</button>
-                    <button onclick="removeCartItem(${i})" style="cursor:pointer;">🗑️</button>
+                    <button onclick="changeQty(${i}, 1)">+</button>
                 </div>
-            </div>`;
+
+                <div class="produto-total">
+                    ${totalItem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+                </div>
+
+                <div class="produto-remover">
+                    <button class="remove" onclick="removeCartItem(${i})">x</button>
+                </div>
+
+            </div>
+        `;
+    });
+
+    totalSpan.textContent = total.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+    if (subtotalSpan) {
+        subtotalSpan.textContent = total.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
         });
     }
 
-    totalSpan.textContent = total.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-});
+    if (descontoSpan) {
+        descontoSpan.textContent = "R$ 0,00";
+    }
 }
 
 // Garante que o CSS do carrinho seja carregado

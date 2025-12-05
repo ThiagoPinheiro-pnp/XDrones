@@ -14,17 +14,55 @@
 <body>
 
     <div data-include="components/header.html"></div>
-    <main></main>
+    <main>
     <section class="carrinho-pagina">
-        <h2>Seu Carrinho</h2>
 
-        <div id="cartItems"></div>
+    <div class="carrinho-header">
+        <span>Produto</span>
+        <span>Entrega</span>
+        <span>Preço</span>
+        <span>Quantidade</span>
+        <span>Total</span>
+    </div>
 
-        <div class="total-area">
-            <h3>Total: <span id="cartTotal">R$ 0,00</span></h3>
-            <a href="compra.html" class="btn">Finalizar Compra</a>
+    <div id="cartItems"></div>
+
+    <div class="carrinho-rodape">
+
+        <div class="carrinho-entrega">
+            <h3>Entrega</h3>
+            <p>Parabéns! Você está quase lá! Calcule o preço de entrega.</p>
+            <button class="btn">CALCULAR</button>
         </div>
-    </section>
+
+        <div class="carrinho-resumo">
+            <div class="linha">
+                <span>Subtotal</span>
+                <span id="subtotalSpan">R$ 0,00</span>
+            </div>
+
+            <div class="linha">
+                <span>Descontos</span>
+                <span id="descontoSpan">R$ 0,00</span>
+            </div>
+
+            <div class="linha total">
+                <span>Total</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+
+            <div class="carrinho-botoes">
+
+        <a href="compra.html" class="btn">Fechar pedido</a>
+
+        <a href="produtos.html" class="btn-secondary">
+            Continuar Comprando
+        </a>
+    </div>
+        </div>
+
+    </div>
+</section>
     </main>
     <div data-include="components/footer.html"></div>
 
