@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Backend.Data;   // Se a pasta for XDronesAPI.Data, ajuste aqui
-using Backend.Models; // Se a pasta for XDronesAPI.Models, ajuste aqui
+using Backend.Data;   // <--- CORRIGIDO: Namespace Backend
+using Backend.Models; // <--- CORRIGIDO: Namespace Backend
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,7 +47,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 // ==================================================================
-// 3. BANCO DE DADOS (Apenas verifica criação e Admin)
+// 3. INICIALIZAÇÃO DO BANCO (Verificação e Admin)
 // ==================================================================
 using (var scope = app.Services.CreateScope())
 {
@@ -56,13 +56,10 @@ using (var scope = app.Services.CreateScope())
     {
         var context = services.GetRequiredService<AppDbContext>();
 
-        // Garante que o banco existe (sem apagar dados)
+        // Garante que o banco e tabelas existem
         context.Database.EnsureCreated();
 
-        // --- REMOVI A PARTE DOS PRODUTOS AQUI ---
-        // Agora o sistema confia 100% nos dados que você inseriu via SQL.
-
-        // Mantive apenas o Admin como backup (se já existir, ele ignora)
+        // Cria apenas o Admin se não existir (Backup)
         if (!context.Usuarios.Any())
         {
             context.Usuarios.Add(new Usuario 
@@ -73,7 +70,11 @@ using (var scope = app.Services.CreateScope())
                 Role = "Admin" 
             });
             context.SaveChanges();
-            Console.WriteLine("--- Usuário Admin de backup criado ---");
+            Console.WriteLine("--- Usuário Admin criado ---");
+        }
+        else
+        {
+            Console.WriteLine("--- Banco de Dados conectado com sucesso! ---");
         }
     }
     catch (Exception ex)
