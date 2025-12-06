@@ -1,68 +1,85 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Backend.Data;
-using Backend.Services;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using System.Globalization;
-using Microsoft.AspNetCore.Localization;
-
+using Backend.Data;   // Se a pasta for XDronesAPI.Data, ajuste aqui
+using Backend.Models; // Se a pasta for XDronesAPI.Models, ajuste aqui
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Define a cultura padrão para o Brasil
-var cultureInfo = new CultureInfo("pt-BR");
+// ==================================================================
+// 1. CONFIGURAÇÃO DOS SERVIÇOS
+// ==================================================================
 
-// 2. Define as culturas suportadas
-var supportedCultures = new[] { cultureInfo };
-builder.Services.Configure<RequestLocalizationOptions>(options =>
-{
-    options.DefaultRequestCulture = new RequestCulture(cultureInfo);
-    options.SupportedCultures = supportedCultures;
-    options.SupportedUICultures = supportedCultures;
-    options.RequestCultureProviders.Insert(0, new AcceptLanguageHeaderRequestCultureProvider());
-});
-
-// 3. Define a cultura para threads internas (importante para formatação)
-CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-
-
-// Configuration & DI
+// Conexão MySQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+// Controllers e Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-// EF Core - MySQL (Pomelo)
-builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
-
-// Services
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddSingleton<ICartService, InMemoryCartService>();
-
+// CORS (Liberar acesso para o Frontend)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirTudo", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
+// ==================================================================
+// 2. PIPELINE DE EXECUÇÃO
+// ==================================================================
 
 if (app.Environment.IsDevelopment())
 {
-app.UseDeveloperExceptionPage();
-app.UseSwagger();
-app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-
-app.UseRouting();
 app.UseHttpsRedirection();
+app.UseCors("PermitirTudo");
 app.UseAuthorization();
-
-
 app.MapControllers();
 
+// ==================================================================
+// 3. BANCO DE DADOS (Apenas verifica criação e Admin)
+// ==================================================================
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+
+        // Garante que o banco existe (sem apagar dados)
+        context.Database.EnsureCreated();
+
+        // --- REMOVI A PARTE DOS PRODUTOS AQUI ---
+        // Agora o sistema confia 100% nos dados que você inseriu via SQL.
+
+        // Mantive apenas o Admin como backup (se já existir, ele ignora)
+        if (!context.Usuarios.Any())
+        {
+            context.Usuarios.Add(new Usuario 
+            { 
+                Nome = "Administrador", 
+                Email = "admin@xdrones.com", 
+                Senha = "123", 
+                Role = "Admin" 
+            });
+            context.SaveChanges();
+            Console.WriteLine("--- Usuário Admin de backup criado ---");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro ao conectar no banco: {ex.Message}");
+    }
+}
 
 app.Run();
