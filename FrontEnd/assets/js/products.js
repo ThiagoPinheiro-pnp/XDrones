@@ -52,9 +52,9 @@ function carregarProdutos() {
 
                     <div class="botoes-produto">
                 
-                <a href="/produto-detalhe.html?id=${produto.id}" class="btn-detalhes-info">
+                <button onclick="abrirModal(${produto.id})" class="btn-detalhes-info">
                     <i class="fa-solid fa-circle-info"></i> Detalhes
-                </a>
+                </button>
 
                 <button class="btn-comprar-acao" onclick="adicionarAoCarrinho(${produto.id})">
                     Comprar <i class="fa-solid fa-cart-shopping"></i>
@@ -102,4 +102,34 @@ document.addEventListener("DOMContentLoaded", () => {
             
         })
         .catch(err => console.error("Erro ao carregar produtos.json:", err));
+});
+
+// ABRIR MODAL DE DETALHES
+
+function abrirModal(id) {
+  const produto = produtos.find(p => p.id === id);
+  if (!produto) return;
+
+  document.getElementById("modal-imagem").src = produto.imagem;
+  document.getElementById("modal-nome").textContent = produto.nome;
+  document.getElementById("modal-descricao").textContent = produto.descricao;
+  document.getElementById("modal-preco").textContent =
+    produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+  document.getElementById("modal-comprar").onclick = () => {
+    adicionarAoCarrinho(produto.id);
+  };
+
+  document.getElementById("modal-produto").classList.remove("hidden");
+}
+
+document.body.style.overflow = "auto";
+document.getElementById("modal-produto").addEventListener("click", (e) => {
+  if (e.target.id === "modal-produto") {
+    document.getElementById("modal-produto").classList.add("hidden");
+  }
+});
+
+document.querySelector(".modal-fechar").addEventListener("click", () => {
+  document.getElementById("modal-produto").classList.add("hidden");
 });
