@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using XDronesAPI.Models;
+using Backend.Models;
 
-namespace XDronesAPI.Data
+namespace Backend.Data
 {
     public class AppDbContext : DbContext
     {

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil | XDRONES</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/login.css"> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div data-include="components/header.html"></div>
+
+    <main style="padding-top: 100px; min-height: 60vh; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center;">
+        
+        <section class="login-container" style="text-align: center;">
+            <div style="font-size: 50px; color: #0057ff; margin-bottom: 20px;">
+                <i class="fa-solid fa-circle-user"></i>
+            </div>
+
+            <h2>Olá, <span id="nomeUsuario">Usuário</span>!</h2>
+            <p>Seja bem-vindo à sua área exclusiva.</p>
+
+            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
+                <button class="btn" onclick="alert('Funcionalidade em breve!')">Meus Pedidos</button>
+                
+                <button class="btn" style="background-color: #e63946;" id="btnLogout">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/cart.js"></script>
+
+    <script>
+        // 1. SEGURANÇA: Se NÃO tiver token, chuta para o login
+        if (!localStorage.getItem("usuario_token")) {
+            window.location.href = "login.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // 2. MOSTRAR NOME: Pega do localStorage e põe na tela
+            const nome = localStorage.getItem("usuario_nome");
+            if (nome) {
+                document.getElementById("nomeUsuario").innerText = nome;
+            }
+
+            // 3. CARREGAR HEADER/FOOTER (Se ui.js falhar)
+            if(!document.querySelector('.topo')) {
+                loadHTML('div[data-include="components/header.html"]', 'components/header.html');
+                loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
+            }
+
+            // 4. LOGOUT (Sair)
+            document.getElementById("btnLogout").addEventListener("click", () => {
+                // Apaga o crachá
+                localStorage.removeItem("usuario_token");
+                localStorage.removeItem("usuario_nome");
+                // Manda pra home
+                window.location.href = "index.html";
+            });
+        });
+
+        function loadHTML(selector, url) {
+            fetch(url).then(r => r.text()).then(d => document.querySelector(selector).innerHTML = d);
+        }
+    </script>
+
+</body>
+</html>

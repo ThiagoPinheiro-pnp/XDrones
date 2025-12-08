@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore; // Importante para usar .ToListAsync()
-using XDronesAPI.Data;
-using XDronesAPI.Models;
+using Backend.Data;
+using Backend.Models;
 
-namespace XDronesAPI.Controllers
+namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

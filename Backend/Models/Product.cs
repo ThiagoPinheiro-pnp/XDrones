@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace XDronesAPI.Models
+namespace Backend.Models
 {
     public class Product
     {

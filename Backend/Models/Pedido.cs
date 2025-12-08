@@ -1,6 +1,6 @@
 using System;
 
-namespace XDronesAPI.Models
+namespace Backend.Models
 {
     public class Pedido
     {
