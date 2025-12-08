@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // URL da API (Ajuste a porta se necessário)
-            const url_api = "https://localhost:7155/api/Pedidos"; 
+            const url_api = "https://cautious-waddle-6q4p4wjwxxwc5j4r-5071.app.github.dev/api/Pedidos"; 
 
             const response = await fetch(url_api, {
                 method: "POST",

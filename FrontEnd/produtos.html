@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Produtos XDRONES</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | XDRONES</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/header.css">
@@ -21,27 +22,22 @@
     <main class="container-produtos">
     
     <section id="agricultura" class="secao-categoria verde">
-        
         <div class="header-categoria-flex"> 
             <h2 class="titulo-categoria">Agricultura</h2>
             <div class="icon"><i class="fa-solid fa-leaf"></i></div>
         </div>
         
         <div class="swiper linha-produtos-agricultura"> 
-            
             <div id="produtos-agricultura" class="swiper-wrapper">
                 </div>
-
             <div class="swiper-button-next swiper-next-agricultura"></div>
             <div class="swiper-button-prev swiper-prev-agricultura"></div>
-            
         </div>
     </section>
 
     <hr class="separador">
 
     <section id="industria" class="secao-categoria vermelho">
-        
         <div class="header-categoria-flex">
             <h2 class="titulo-categoria">Indústria</h2>
             <div class="icon"><i class="fa-solid fa-gears"></i></div>
@@ -49,8 +45,7 @@
 
         <div class="swiper linha-produtos-industria">
             <div id="produtos-industria" class="swiper-wrapper">
-                </div>
-            
+                 </div>
             <div class="swiper-button-next swiper-next-industria"></div>
             <div class="swiper-button-prev swiper-prev-industria"></div>
         </div>
@@ -59,7 +54,6 @@
     <hr class="separador">
 
     <section id="seguranca" class="secao-categoria cinza">
-        
         <div class="header-categoria-flex">
             <h2 class="titulo-categoria">Segurança e Defesa</h2>
             <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -67,45 +61,39 @@
 
         <div class="swiper linha-produtos-seguranca">
             <div id="produtos-seguranca" class="swiper-wrapper">
-                </div>
-            
+                 </div>
             <div class="swiper-button-next swiper-next-seguranca"></div>
             <div class="swiper-button-prev swiper-prev-seguranca"></div>
         </div>
     </section>
 
-</main>
+    </main>
 
-<!-- MODAL DETALHES DO PRODUTO -->
-<div id="modal-produto" class="modal-overlay hidden">
-  <div class="modal-container">
-
-    <button class="modal-fechar">&times;</button>
-
-    <div class="modal-conteudo">
-      <div class="modal-imagem">
-        <img id="modal-imagem" src="" alt="">
-      </div>
-
-      <div class="modal-info">
-        <h2 id="modal-nome"></h2>
-        <p id="modal-descricao"></p>
-        <p class="modal-preco" id="modal-preco"></p>
-
-        <button id="modal-comprar">
-        Comprar <i class="fa-solid fa-cart-shopping"></i>
-        </button>
+    <div id="modal-produto" class="modal-overlay hidden">
+      <div class="modal-container">
+        <button class="modal-fechar">&times;</button>
+        <div class="modal-conteudo">
+          <div class="modal-imagem">
+            <img id="modal-imagem" src="" alt="Drone">
+          </div>
+          <div class="modal-info">
+            <h2 id="modal-nome"></h2>
+            <p id="modal-descricao"></p>
+            <p class="modal-preco" id="modal-preco"></p>
+            <button id="modal-comprar" class="btn-comprar-modal">
+                Comprar <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
-  </div>
-</div>
-
     <div data-include="components/footer.html"></div>
     
-    <script src="assets/js/products.js"></script> 
-    <script src="assets/js/cart.js"></script>
     <script src="assets/js/ui.js"></script>
+    <script src="assets/js/cart.js"></script>
+    
+    <script src="assets/js/products.js"></script> 
 
     <script>
         function loadHTML(selector, url) {
@@ -124,8 +112,7 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> 
-<script src="assets/js/carousel.js"></script>
+    <script src="assets/js/carousel.js"></script>
     
 </body>
-
 </html>

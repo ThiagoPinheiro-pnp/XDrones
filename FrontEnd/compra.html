@@ -17,9 +17,9 @@
 
     <div data-include="components/header.html"></div>
 
-    <main style="padding-top: 120px; padding-bottom: 60px; background-color: #f9f9f9; min-height: 80vh;">
+    <main class="main-checkout">
         
-        <section class="login-container" style="margin: 0 auto; max-width: 600px;">
+        <section class="login-container">
             
             <h2 style="text-align: center; margin-bottom: 10px;">Finalizar Compra</h2>
             <p style="text-align: center; color: #666; margin-bottom: 30px;">Confira seus dados para entrega</p>
@@ -40,14 +40,14 @@
                 <input type="text" id="enderecoInput" placeholder="Rua, Número, Bairro, Cidade" required>
 
                 <label for="pagamentoInput">Forma de Pagamento</label>
-                <select id="pagamentoInput" style="width: 100%; padding: 12px; margin-bottom: 25px; border: 1px solid #ccc; border-radius: 6px; background-color: #fff;" required>
+                <select id="pagamentoInput" required>
                     <option value="" disabled selected>Selecione...</option>
                     <option value="Pix">Pix (Aprovação Imediata)</option>
                     <option value="Cartão de Crédito">Cartão de Crédito</option>
                     <option value="Boleto">Boleto Bancário</option>
                 </select>
 
-                <button type="submit" class="btn btn-full" style="font-size: 1.1rem;">
+                <button type="submit" class="btn btn-full">
                     <i class="fa-solid fa-check"></i> Confirmar Pedido
                 </button>
 
