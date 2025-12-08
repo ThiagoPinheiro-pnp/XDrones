@@ -76,6 +76,31 @@
 
 </main>
 
+<!-- MODAL DETALHES DO PRODUTO -->
+<div id="modal-produto" class="modal-overlay hidden">
+  <div class="modal-container">
+
+    <button class="modal-fechar">&times;</button>
+
+    <div class="modal-conteudo">
+      <div class="modal-imagem">
+        <img id="modal-imagem" src="" alt="">
+      </div>
+
+      <div class="modal-info">
+        <h2 id="modal-nome"></h2>
+        <p id="modal-descricao"></p>
+        <p class="modal-preco" id="modal-preco"></p>
+
+        <button id="modal-comprar">
+        Comprar <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
     <div data-include="components/footer.html"></div>
     
     <script src="assets/js/products.js"></script> 

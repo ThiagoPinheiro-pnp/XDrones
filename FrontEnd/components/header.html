@@ -10,13 +10,52 @@
         <a href="sobre.html">Sobre nós</a>
     </nav>
 
+    <button class="menu-hamburger" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
     <div class="header-acoes"> 
-        <a href="login.html" class="user-icon" title="Login / Minha Conta">
-            <i class="fa-solid fa-user"></i>
-        </a>
-        
-        <a href="#" id="header-cart-btn" class="cart-icon" title="Carrinho de Compras">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </a>
+
+  <!-- 👤 USER -->
+  <div class="dropdown">
+    <a href="#" class="user-icon" aria-label="Minha Conta">
+      <i class="fa-solid fa-user"></i>
+    </a>
+
+    <div class="dropdown-menu">
+      <a href="login.html">Login</a>
+      <a href="cadastro.html">Cadastro</a>
+      <a href="minha-conta.html">Minha Conta</a>
+      <a href="#">Sair</a>
     </div>
+  </div>
+
+  <!-- 🛒 CARRINHO -->
+  <div class="dropdown">
+    <a href="#" id="header-cart-btn" class="cart-icon" aria-label="Carrinho">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </a>
+
+    <div class="dropdown-menu">
+      <a href="carrinho.html">Ver Carrinho</a>
+      <a href="pedidos.html">Meus Pedidos</a>
+    </div>
+  </div>
+
+</div>
 </header>
+
+<div class="menu-mobile" id="menu-mobile">
+  <button class="fechar-menu" aria-label="Fechar menu">×</button>
+
+  <nav class="menu-mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="contato.html">Contato</a>
+    <a href="sobre.html">Sobre nós</a>
+  </nav>
+</div>
+
+<div class="menu-overlay" id="menu-overlay"></div>
