@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Meus Pedidos | XDRONES</title>
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
-    <link rel="stylesheet" href="assets/css/cart.css">
-    <link rel="stylesheet" href="assets/css/login.css"> 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* Estilos específicos para a lista de pedidos */
+        /* Estilos simples para os cards */
         .pedido-card {
             background: #fff;
             border: 1px solid #ddd;
@@ -23,15 +22,12 @@
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .pedido-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #333; }
+        .pedido-info h3 { margin: 0 0 5px 0; color: #333; }
         .pedido-info p { margin: 0; color: #666; font-size: 0.9rem; }
         .pedido-status {
-            background: #e6f4ea;
-            color: #1e7e34;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
+            background: #e6f4ea; color: #1e7e34;
+            padding: 5px 10px; border-radius: 20px;
+            font-size: 0.85rem; font-weight: bold;
         }
         .pedido-total { font-size: 1.2rem; font-weight: bold; color: #0057ff; }
     </style>
@@ -45,11 +41,13 @@
             
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
                 <h2>Meus Pedidos</h2>
-                <a href="perfil.html" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Voltar ao Perfil</a>
+                <a href="perfil.html" class="btn" style="background:#666; padding: 8px 15px; font-size: 0.9rem;">Voltar</a>
             </div>
 
             <div id="lista-pedidos">
-                <p style="text-align:center; color:#666;">Carregando seus pedidos...</p>
+                <p style="text-align:center; color:#666;">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Carregando...
+                </p>
             </div>
 
         </section>
@@ -58,69 +56,7 @@
     <div data-include="components/footer.html"></div>
 
     <script src="assets/js/ui.js"></script>
-    <script src="assets/js/cart.js"></script>
-
-    <script>
-        // LÓGICA PARA CARREGAR PEDIDOS
-        document.addEventListener("DOMContentLoaded", async () => {
-            const listaDiv = document.getElementById("lista-pedidos");
-            const usuarioId = localStorage.getItem("usuario_id");
-
-            if (!usuarioId) {
-                window.location.href = "login.html";
-                return;
-            }
-
-            try {
-                // Chama a API para buscar pedidos deste usuário
-                // NOTA: Precisamos criar este endpoint no Backend em breve!
-                const response = await fetch(`https://localhost:7155/api/Pedidos/usuario/${usuarioId}`);
-                
-                if (response.ok) {
-                    const pedidos = await response.json();
-
-                    if (pedidos.length === 0) {
-                        listaDiv.innerHTML = "<p style='text-align:center'>Você ainda não fez nenhum pedido.</p>";
-                        return;
-                    }
-
-                    listaDiv.innerHTML = ""; // Limpa o "Carregando..."
-
-                    // Cria um card para cada pedido
-                    pedidos.forEach(pedido => {
-                        const dataFormatada = new Date(pedido.dataPedido).toLocaleDateString('pt-BR');
-                        const totalFormatado = pedido.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-                        listaDiv.innerHTML += `
-                            <div class="pedido-card">
-                                <div class="pedido-info">
-                                    <h3>Pedido #${pedido.id}</h3>
-                                    <p>Data: ${dataFormatada}</p>
-                                    <p>Pagamento: ${pedido.formaPagamento}</p>
-                                </div>
-                                <div style="text-align:right;">
-                                    <div class="pedido-total">${totalFormatado}</div>
-                                    <span class="pedido-status">Aprovado</span>
-                                </div>
-                            </div>
-                        `;
-                    });
-                } else {
-                    listaDiv.innerHTML = "<p style='color:red; text-align:center'>Erro ao carregar pedidos.</p>";
-                }
-            } catch (error) {
-                console.error(error);
-                listaDiv.innerHTML = "<p style='text-align:center'>Não foi possível conectar ao servidor.</p>";
-            }
-        });
-
-        // Loader de componentes
-        function loadHTML(selector, url) {
-            fetch(url).then(r => r.text()).then(d => document.querySelector(selector).innerHTML = d);
-        }
-        loadHTML('div[data-include="components/header.html"]', 'components/header.html');
-        loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
-    </script>
+    <script src="assets/js/pedidos.js"></script> 
 
 </body>
 </html>

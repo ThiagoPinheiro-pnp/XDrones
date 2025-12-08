@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const msgErro = document.getElementById('msgErro');
 
     // URL do teu Backend (Endereço do Codespaces)
+    // CERTIFICA-TE QUE O BACKEND ESTÁ RODANDO NESTA URL
     const url_api = "https://cautious-waddle-6q4p4wjwxxwc5j4r-5071.app.github.dev/api/Auth/login"; 
 
     loginForm.addEventListener('submit', async (event) => {
@@ -17,7 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Pega os valores dos inputs
         const email = document.getElementById('emailInput').value;
+        
+        // --- CORREÇÃO AQUI (estava documentac) ---
         const senha = document.getElementById('senhaInput').value;
+        // -----------------------------------------
 
         // Limpa mensagens antigas e dá feedback visual
         msgErro.style.color = "#333";
@@ -46,16 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem("usuario_token", data.token);
                 localStorage.setItem("usuario_nome", data.usuario);
                 
-                // --- NOVO: SALVAR O ID DO USUÁRIO PARA O CHECKOUT ---
-                // Se o backend mandar o ID, a gente salva. Se não, salva 0 por segurança.
+                // --- IMPORTANTE: SALVAR O ID DO USUÁRIO ---
                 if (data.id) {
                     localStorage.setItem("usuario_id", data.id);
                 } else {
                     console.warn("Backend não retornou o ID. Checkout pode falhar.");
                 }
                 
-                // Se o backend mandar a 'role' (tipo de usuário), salva também
-                if (data.tipo) localStorage.setItem("usuario_role", data.tipo);
+                if (data.role) localStorage.setItem("usuario_role", data.role);
 
                 alert("Login realizado com sucesso! Bem-vindo, " + data.usuario);
 

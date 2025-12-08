@@ -924,3 +924,26 @@ textarea {
 .btn-danger:hover {
   background: #b91c1c;
 }
+
+/* =======================================================
+   ESTILOS ESPECÍFICOS DO CHECKOUT
+   (Adicionar ao final do style.css)
+   ======================================================= */
+
+.main-checkout {
+    display: flex;
+    justify-content: center; /* Centraliza na horizontal (Esquerda/Direita) */
+    align-items: flex-start; /* Alinha no topo (melhor para formulários longos) */
+    min-height: 80vh;        /* Garante altura para não colar no footer */
+    padding-top: 60px;       /* Espaço para respirar do topo */
+    padding-bottom: 860px;    /* Espaço em baixo */
+    width: 100%;
+}
+
+/* Ajuste opcional para dispositivos móveis */
+@media (max-width: 768px) {
+    .main-checkout {
+        padding: 20px;
+        align-items: center; /* No celular fica melhor centralizado total */
+    }
+}
