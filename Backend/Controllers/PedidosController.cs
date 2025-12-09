@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Importante para usar .ToListAsync()
+using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using Backend.Models;
 
