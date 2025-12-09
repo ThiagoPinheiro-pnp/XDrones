@@ -1,65 +1,104 @@
-XDrones
+# XDrones 🚁
 
-Projeto de aplicação com frontend + backend — “XDrones”
+Projeto de aplicação web com **frontend** e **backend** integrado.
 
-🔎 Visão Geral
+---
 
-XDrones é um projeto com backend e frontend para uma aplicação web — a estrutura do repositório sugere divisão clara entre essas duas camadas. 
-GitHub
+## 🔎 Visão Geral
 
-O objetivo do README é facilitar para novos desenvolvedores e usuários entenderem o que é o projeto, como executá-lo localmente, e como contribuir para ele.
+**XDrones** é uma aplicação web desenvolvida com arquitetura separada entre **backend** e **frontend**, facilitando manutenção, escalabilidade e colaboração entre desenvolvedores.
 
-📁 Estrutura do Repositório
-/Backend        ← código da API / lógica do servidor  
-/FrontEnd       ← código da interface / cliente web  
-XDrones.sln     ← solução (provavelmente para Visual Studio / .NET)  
+O objetivo deste projeto é servir como base para estudo, desenvolvimento e prática de conceitos de aplicações web modernas, utilizando tecnologias amplamente adotadas no mercado.
+
+Este README tem como finalidade orientar novos desenvolvedores e usuários sobre:
+- O propósito do projeto  
+- Sua estrutura  
+- Como executá-lo localmente  
+- Quem são os desenvolvedores envolvidos  
+
+---
+
+## 📁 Estrutura do Repositório
+
+/Backend        # Código da API e lógica do servidor
+/FrontEnd       # Código da interface do usuário (cliente web)
+XDrones.sln     # Solução do projeto (.NET / Visual Studio)
+
 
 
 🚀 Tecnologias Utilizadas
+🔧 Backend
 
-Baseado na composição de linguagens detectadas no repositório: 
-GitHub
-
-Backend: C#, .NET, EF Core, Mysql
-
-Frontend: HTML, CSS, JavaScript
-
-
-🛠️ Como Executar o Projeto (development)
-
-Aqui um passo-a-passo genérico. Ajuste conforme seu ambiente:
-
-Pré-requisitos
-
-[.NET SDK / Visual Studio]
-
-Navegador moderno para o frontend
+C#
 
 .NET
 
-Passos
+Entity Framework Core
 
-Clone o repositório
+MySQL
+
+🎨 Frontend
+
+HTML
+
+CSS
+
+JavaScript
+
+
+🛠️ Como Executar o Projeto (Ambiente de Desenvolvimento)
+✅ Pré-requisitos
+
+.NET SDK e/ou Visual Studio
+
+Navegador web moderno (Chrome, Edge, Firefox, etc.)
+
+MySQL configurado e em execução
+
+▶️ Passo a Passo
+
+Clone o repositório:
 
 git clone https://github.com/ThiagoPinheiro-pnp/XDrones.git
 
-Abra a solução XDrones.sln com Visual Studio / .NET / sua IDE de preferência
 
-Para backend: compile e rode o servidor (usualmente via IDE ou dotnet run)
+Abra o arquivo XDrones.sln no Visual Studio ou na IDE de sua preferência
 
-Para frontend: abra os arquivos HTML/CSS/JS no navegador ou rode via servidor local, se configurado
+Execute o Backend:
 
-Acesse a interface pelo navegador (ex: http://localhost:5000 ou conforme configuração)
+Pelo Visual Studio (botão Run)
+
+Ou via terminal:
+
+dotnet run
 
 
-## 👥 Desenvolvedores
+Execute o Frontend:
+
+Abra os arquivos HTML diretamente no navegador
+ou
+
+Utilize um servidor local, caso esteja configurado
+
+Acesse a aplicação no navegador:
+
+http://localhost:5000
+
+
+(a porta pode variar conforme a configuração do projeto)
+
+👥 Desenvolvedores
 
 Projeto desenvolvido por:
 
-- **Thiago Pinheiro dos Santos**
-- **Matheus da Silva Salgado Veiga**
-- **Rennan Miranda Rodrigues Gonçalves dos Santos Leite**
-- **João Victor de Oliveira Macedo**
-- **Roniel Santana Faria**
+Thiago Pinheiro dos Santos
 
-Todos atuaram no desenvolvimento do projeto **XDrones**, contribuindo para as camadas de frontend, backend e organização da aplicação.
+Matheus da Silva Salgado Veiga
+
+Rennan Miranda Rodrigues Gonçalves dos Santos Leite
+
+João Victor de Oliveira Macedo
+
+Roniel Santana Faria
+
+Todos contribuíram para o desenvolvimento do XDrones, atuando nas camadas de frontend, backend e na organização geral da aplicação.
