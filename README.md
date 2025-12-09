@@ -26,8 +26,8 @@ XDrones.sln     # Solução do projeto (.NET / Visual Studio)
 
 
 
-🚀 Tecnologias Utilizadas
-🔧 Backend
+##🚀 Tecnologias Utilizadas
+##🔧 Backend
 
 C#
 
