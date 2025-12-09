@@ -104,3 +104,12 @@
 /workspaces/XDrones/Backend/obj/Debug/net8.0/Backend.pdb
 /workspaces/XDrones/Backend/obj/Debug/net8.0/Backend.genruntimeconfig.cache
 /workspaces/XDrones/Backend/obj/Debug/net8.0/ref/Backend.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/workspaces/XDrones/Backend/bin/Debug/net8.0/BCrypt.Net-Next.dll

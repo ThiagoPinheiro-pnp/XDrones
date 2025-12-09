@@ -15,23 +15,63 @@
 
     <div data-include="components/header.html"></div>
 
-    <main style="padding-top: 100px; min-height: 60vh; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center;">
-        
-        <section class="login-container" style="text-align: center;">
-            <div style="font-size: 50px; color: #0057ff; margin-bottom: 20px;">
-                <i class="fa-solid fa-circle-user"></i>
+    <main style="padding-top: 60px; padding-bottom: 0; background-color: #f4f4f4; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh;">
+
+        <section class="login-container page-with-footer-space" style="width:720px; max-width:95%; text-align:left; padding-bottom: 220px;">
+            <div style="display:flex; gap:18px; align-items:center;">
+                <div style="font-size: 56px; color: #0057ff;">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+                <div>
+                    <h2 style="margin:0">Minha Conta</h2>
+                    <p style="margin:0; color:#666">Gerencie suas informações pessoais</p>
+                </div>
             </div>
 
-            <h2>Olá, <span id="nomeUsuario">Usuário</span>!</h2>
-            <p>Seja bem-vindo à sua área exclusiva.</p>
+            <hr style="margin:18px 0">
 
-            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
-                <a href="pedidos.html" class="btn" style="text-decoration: none; display: inline-block; text-align: center;"> Meus Pedidos </a>
-                
-                <button class="btn" style="background-color: #e63946;" id="btnLogout">
-                    <i class="fa-solid fa-right-from-bracket"></i> Sair
-                </button>
-            </div>
+            <form id="perfilForm">
+                <p id="perfilMsg" class="form-message" style="display:none"></p>
+
+                <label>Nome</label>
+                <input type="text" id="nomeInput" required>
+
+                <label>Email</label>
+                <input type="email" id="emailInput" disabled>
+
+                <label>CPF</label>
+                <input type="text" id="cpfInput">
+
+                <label>Endereço</label>
+                <input type="text" id="enderecoInput">
+
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1">
+                        <label>Número</label>
+                        <input type="text" id="numeroInput">
+                    </div>
+                    <div style="flex:1">
+                        <label>CEP</label>
+                        <input type="text" id="cepInput">
+                    </div>
+                </div>
+
+                <label>Referência</label>
+                <input type="text" id="referenciaInput">
+
+                <label>Nova Senha (opcional)</label>
+                <input type="password" id="senhaNovaInput" placeholder="Deixe vazio para manter a atual">
+
+                <div style="margin-top:18px; display:flex; gap:10px;">
+                    <button type="button" id="btnEdit" class="btn">Editar</button>
+                    <button type="submit" id="btnSave" class="btn" style="display:none">Salvar</button>
+                    <button type="button" id="btnCancel" class="btn" style="display:none; background:#999">Cancelar</button>
+                    <a href="pedidos.html" class="btn" style="margin-left:auto">Meus Pedidos</a>
+                    <button class="btn" style="background-color: #e63946;" id="btnLogout">
+                        <i class="fa-solid fa-right-from-bracket"></i> Sair
+                    </button>
+                </div>
+            </form>
         </section>
 
     </main>
@@ -40,40 +80,7 @@
 
     <script src="assets/js/ui.js"></script>
     <script src="assets/js/cart.js"></script>
-
-    <script>
-        // 1. SEGURANÇA: Se NÃO tiver token, chuta para o login
-        if (!localStorage.getItem("usuario_token")) {
-            window.location.href = "login.html";
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // 2. MOSTRAR NOME: Pega do localStorage e põe na tela
-            const nome = localStorage.getItem("usuario_nome");
-            if (nome) {
-                document.getElementById("nomeUsuario").innerText = nome;
-            }
-
-            // 3. CARREGAR HEADER/FOOTER (Se ui.js falhar)
-            if(!document.querySelector('.topo')) {
-                loadHTML('div[data-include="components/header.html"]', 'components/header.html');
-                loadHTML('div[data-include="components/footer.html"]', 'components/footer.html');
-            }
-
-            // 4. LOGOUT (Sair)
-            document.getElementById("btnLogout").addEventListener("click", () => {
-                // Apaga o crachá
-                localStorage.removeItem("usuario_token");
-                localStorage.removeItem("usuario_nome");
-                // Manda pra home
-                window.location.href = "index.html";
-            });
-        });
-
-        function loadHTML(selector, url) {
-            fetch(url).then(r => r.text()).then(d => document.querySelector(selector).innerHTML = d);
-        }
-    </script>
+    <script src="assets/js/perfil.js"></script>
 
 </body>
 </html>

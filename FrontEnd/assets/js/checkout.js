@@ -28,6 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("nomeInput").value = usuarioNome;
     }
 
+    // 3.1 Tentar buscar dados completos do usuário no backend (endereço)
+    (async function fetchUserProfile() {
+        const token = localStorage.getItem('usuario_token');
+        if (!token) return;
+        try {
+            const meUrl = "https://cautious-waddle-6q4p4wjwxxwc5j4r-5071.app.github.dev/api/Auth/me";
+            const res = await fetch(meUrl, { headers: { 'Authorization': 'Bearer ' + token } });
+            if (!res.ok) return;
+            const data = await res.json();
+            if (data && data.endereco) {
+                const enderecoEl = document.getElementById('enderecoInput');
+                if (enderecoEl) enderecoEl.value = data.endereco + (data.numero ? (', ' + data.numero) : '');
+            }
+        } catch (e) {
+            console.warn('Não foi possível buscar perfil do usuário:', e);
+        }
+    })();
+
     // 4. LÓGICA DE ENVIO DO PEDIDO
     const form = document.getElementById("checkoutForm");
     
@@ -63,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response = await fetch(url_api, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json", "Authorization": "Bearer " + localStorage.getItem('usuario_token') },
                 body: JSON.stringify(pedido)
             });
 

@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Importante para usar .ToListAsync()
+using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.Controllers
 {
@@ -20,6 +21,7 @@ namespace Backend.Controllers
         // 1. CRIAR NOVO PEDIDO (Chamado pelo Checkout)
         // ==========================================================
         [HttpPost]
+        [Authorize] 
         public async Task<IActionResult> CriarPedido([FromBody] Pedido pedido)
         {
             // Validação simples
@@ -46,15 +48,28 @@ namespace Backend.Controllers
         // 2. LISTAR PEDIDOS DO USUÁRIO (Chamado pelo Perfil/Meus Pedidos)
         // ==========================================================
         [HttpGet("usuario/{usuarioId}")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Pedido>>> GetPedidosPorUsuario(int usuarioId)
         {
+            // Validação: apenas o próprio usuário ou um Admin pode consultar os pedidos
+            var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (userIdClaim == null)
+            {
+                return Unauthorized();
+            }
+
+            // Se não for Admin e tentar acessar outro usuário, bloqueia
+            if (!User.IsInRole("Admin") && userIdClaim != usuarioId.ToString())
+            {
+                return Forbid();
+            }
+
             // Busca na tabela 'Pedidos' todos que tenham o UsuarioId igual ao solicitado
             var pedidos = await _context.Pedidos
                 .Where(p => p.UsuarioId == usuarioId)
                 .OrderByDescending(p => p.DataPedido) // Ordena do mais recente para o mais antigo
                 .ToListAsync();
 
-            // Se não achar nada, retorna lista vazia (não é erro, é só que não comprou nada ainda)
             return Ok(pedidos);
         }
     }

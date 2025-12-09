@@ -27,7 +27,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         // AGORA A MÁGICA ACONTECE AQUI:
         // Base + Controller + Endpoint + ID
         // Resultado: .../api/Pedidos/usuario/15
-        const response = await fetch(`${API_BASE_URL}/Pedidos/usuario/${usuarioId}`);
+        const response = await fetch(`${API_BASE_URL}/Pedidos/usuario/${usuarioId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + usuarioToken
+            }
+        });
         
         if (response.ok) {
             const pedidos = await response.json();

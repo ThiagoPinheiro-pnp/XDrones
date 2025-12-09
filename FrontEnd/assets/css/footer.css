@@ -8,6 +8,9 @@
     padding: 70px 0 0 0;
     font-family: 'Inter', sans-serif;
     margin-top: auto; /* Garante que fica no final da página */
+    width: 100%;
+    position: relative;
+    z-index: 10; /* Garante que fica acima do conteúdo */
 }
 
 .footer-container {

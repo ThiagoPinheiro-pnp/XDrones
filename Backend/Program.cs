@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Backend.Data;   // <--- CORRIGIDO: Namespace Backend
-using Backend.Models; // <--- CORRIGIDO: Namespace Backend
+using Backend.Data;  
+using Backend.Models;
+using BCrypt.Net;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +21,73 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Controllers e Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddSwaggerGen(c =>
+{   
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "NomeDaSuaAPI", Version = "v1" });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization", // Nome do cabeçalho HTTP
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer", // Esquema padrão usado com JWT
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header, // Indica que o token é passado no cabeçalho
+        Description = "Insira o token JWT no formato: Bearer {seu token}",
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer" // ID definido acima
+                }
+            },
+            new string[] {} // Escopos necessários (deixe vazio para JWT simples)
+        }
+    });
+});
+
+
+
+
+builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<ValidationService>();
+
+var jwtKey = builder.Configuration.GetValue<string>("Jwt:Key") ?? throw new InvalidOperationException("Jwt:Key não configurado");
+var key = Encoding.ASCII.GetBytes(jwtKey);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false; // Mude para true em produção
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero // Sem margem de tempo para expiração
+    };
+});
+
+
+
+
 
 // CORS (Liberar acesso para o Frontend)
 builder.Services.AddCors(options =>
@@ -43,6 +114,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("PermitirTudo");
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
@@ -66,7 +138,7 @@ using (var scope = app.Services.CreateScope())
             { 
                 Nome = "Administrador", 
                 Email = "admin@xdrones.com", 
-                Senha = "123", 
+                Senha = BCrypt.Net.BCrypt.HashPassword("123"), 
                 Role = "Admin" 
             });
             context.SaveChanges();

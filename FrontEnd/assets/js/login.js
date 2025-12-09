@@ -27,6 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
         msgErro.style.color = "#333";
         msgErro.innerText = "Processando...";
 
+        // Validação básica no cliente
+        const isValidEmail = (em) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em);
+        if (!isValidEmail(email)) {
+            msgErro.style.color = "red";
+            msgErro.innerText = "Formato de email inválido.";
+            return;
+        }
+        if (!senha || senha.length === 0) {
+            msgErro.style.color = "red";
+            msgErro.innerText = "Senha é obrigatória.";
+            return;
+        }
+
         try {
             // 3. Envia para o Backend
             const response = await fetch(url_api, {

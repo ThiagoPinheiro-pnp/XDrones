@@ -27,6 +27,7 @@ body {
 main {
     flex: 1; /* Ocupa o espaço que sobrar, empurrando o footer */
     width: 100%;
+    padding-bottom: 100px; /* Espaço para o footer não sobrepor */
 }
 
 /* Títulos padrão */
@@ -563,6 +564,11 @@ textarea {
     text-align: center;
 }
 
+/* Espaço inferior — garante que páginas com conteúdo curto não fiquem escondidas pelo footer */
+.page-with-footer-space {
+    padding-bottom: 0; /* O main já cuida do espaço */
+}
+
 .login-container h2 {
     font-size: 2rem;
     margin-bottom: 10px;
@@ -668,6 +674,82 @@ textarea {
 
 .cadastro-etapa.active {
     display: block;
+}
+/* Password rules UI (used only on cadastro page) */
+.pw-rules {
+    margin-top: 8px;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 12px;
+    border-radius: 8px;
+    max-width: 520px;
+    margin-bottom: 16px; /* espaço extra para separar do conteúdo abaixo */
+}
+.pw-rules strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 0.95rem;
+}
+.pw-rules ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 12px;
+}
+.pw-rules li {
+    font-size: 0.92rem;
+    color: #a1a1a1;
+    padding-left: 22px;
+    position: relative;
+}
+.pw-rules li::before {
+    content: '●';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+.pw-rules li.valid {
+    color: #167f43; /* verde */
+}
+.pw-rules li.valid::before {
+    content: '✓';
+    color: #167f43;
+}
+.pw-rules li.invalid {
+    color: #c62828; /* vermelho */
+}
+.pw-rules li.invalid::before {
+    content: '✕';
+    color: #c62828;
+}
+.pw-rules {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+
+/* Mensagens inline para formulários */
+.form-message {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    margin: 12px 0 8px 0;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+.form-message.msg-error {
+    color: #7a1f1f;
+    background: #ffeaea;
+    border: 1px solid #f5c6c6;
+}
+.form-message.msg-success {
+    color: #0f5132;
+    background: #d1e7dd;
+    border: 1px solid #badbcc;
 }
 /* =======================================================
    PÁGINA CARRINHO LEGADO
@@ -936,7 +1018,7 @@ textarea {
     align-items: flex-start; /* Alinha no topo (melhor para formulários longos) */
     min-height: 80vh;        /* Garante altura para não colar no footer */
     padding-top: 60px;       /* Espaço para respirar do topo */
-    padding-bottom: 860px;    /* Espaço em baixo */
+    padding-bottom: 80px;    /* Espaço em baixo ajustado (removido valor exagerado) */
     width: 100%;
 }
 
