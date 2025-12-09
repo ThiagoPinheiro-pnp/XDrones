@@ -24,7 +24,7 @@ Este README tem como finalidade orientar novos desenvolvedores e usuários sobre
 /FrontEnd       # Código da interface do usuário (cliente web)
 XDrones.sln     # Solução do projeto (.NET / Visual Studio)
 
-
+---
 
 ##🚀 Tecnologias Utilizadas
 ##🔧 Backend
@@ -37,6 +37,8 @@ Entity Framework Core
 
 MySQL
 
+---
+
 🎨 Frontend
 
 HTML
@@ -45,6 +47,7 @@ CSS
 
 JavaScript
 
+---
 
 🛠️ Como Executar o Projeto (Ambiente de Desenvolvimento)
 ✅ Pré-requisitos
@@ -54,6 +57,8 @@ JavaScript
 Navegador web moderno (Chrome, Edge, Firefox, etc.)
 
 MySQL configurado e em execução
+
+---
 
 ▶️ Passo a Passo
 
@@ -87,6 +92,8 @@ http://localhost:5000
 
 (a porta pode variar conforme a configuração do projeto)
 
+---
+
 👥 Desenvolvedores
 
 Projeto desenvolvido por:
@@ -100,5 +107,6 @@ Rennan Miranda Rodrigues Gonçalves dos Santos Leite
 João Victor de Oliveira Macedo
 
 Roniel Santana Faria
+
 
 Todos contribuíram para o desenvolvimento do XDrones, atuando nas camadas de frontend, backend e na organização geral da aplicação.
