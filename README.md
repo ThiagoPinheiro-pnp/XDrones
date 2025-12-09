@@ -20,7 +20,7 @@ XDrones.sln     ← solução (provavelmente para Visual Studio / .NET)
 Baseado na composição de linguagens detectadas no repositório: 
 GitHub
 
-Backend: C# (provavelmente .NET, dada a presença de .sln)
+Backend: C#, .NET, EF Core, Mysql
 
 Frontend: HTML, CSS, JavaScript
 
@@ -31,18 +31,17 @@ Aqui um passo-a-passo genérico. Ajuste conforme seu ambiente:
 
 Pré-requisitos
 
-[.NET SDK / Visual Studio] (caso o backend seja .NET)
+[.NET SDK / Visual Studio]
 
 Navegador moderno para o frontend
 
-Node.js / npm ou outro gerenciador de pacotes (caso use JS bundler / frameworks) — se aplicável
+.NET
 
 Passos
 
 Clone o repositório
 
 git clone https://github.com/ThiagoPinheiro-pnp/XDrones.git
-
 
 Abra a solução XDrones.sln com Visual Studio / .NET / sua IDE de preferência
 
@@ -52,24 +51,6 @@ Para frontend: abra os arquivos HTML/CSS/JS no navegador ou rode via servidor lo
 
 Acesse a interface pelo navegador (ex: http://localhost:5000 ou conforme configuração)
 
-Se o frontend e backend são separados, indique como configurar ambos juntos (por exemplo, se usar CORS, variáveis de ambiente, porta etc).
-
-
-📦 Como Contribuir
-
-Se você quiser colaborar com XDrones, por favor:
-
-Fork este repositório
-
-Crie uma branch com a sua feature ou bug fix: git checkout -b minha-feature
-
-Commit suas mudanças: git commit -m "Descrição da feature"
-
-Envie para o repositório remoto: git push origin minha-feature
-
-Abra um Pull Request descrevendo o que foi feito
-
-Sinta-se à vontade para abrir issues para discutir ideias ou bugs antes de implementar.
 
 ## 👥 Desenvolvedores
 
