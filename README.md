@@ -15,8 +15,6 @@ O objetivo do README é facilitar para novos desenvolvedores e usuários entende
 XDrones.sln     ← solução (provavelmente para Visual Studio / .NET)  
 
 
-GitHub
-
 🚀 Tecnologias Utilizadas
 
 Baseado na composição de linguagens detectadas no repositório: 
@@ -26,23 +24,6 @@ Backend: C# (provavelmente .NET, dada a presença de .sln)
 
 Frontend: HTML, CSS, JavaScript
 
-⚠️ Você pode completar essa lista conforme as libs e frameworks específicos usados (por exemplo: .NET Core, React, Vue, etc).
-
-💡 Funcionalidades (pretendidas / a implementar)
-
-Como o projeto ainda não tem README, você pode descrever aqui os objetivos ou funcionalidades planejadas. Alguns exemplos:
-
-API para gerenciar dados de drones (cadastro, status, missões etc.)
-
-Interface web para visualização e controle dos dados
-
-Autenticação / autorização de usuários
-
-Integração com banco de dados (se houver)
-
-Rotas de API, CRUD, validações, etc.
-
-Você deve adaptar essa seção conforme o que o backend/frontend efetivamente implementa.
 
 🛠️ Como Executar o Projeto (development)
 
@@ -73,6 +54,7 @@ Acesse a interface pelo navegador (ex: http://localhost:5000 ou conforme configu
 
 Se o frontend e backend são separados, indique como configurar ambos juntos (por exemplo, se usar CORS, variáveis de ambiente, porta etc).
 
+
 📦 Como Contribuir
 
 Se você quiser colaborar com XDrones, por favor:
@@ -100,20 +82,3 @@ Projeto desenvolvido por:
 - **Roniel Santana Faria**
 
 Todos atuaram no desenvolvimento do projeto **XDrones**, contribuindo para as camadas de frontend, backend e organização da aplicação.
-
-
-MatheusVeiga
- — colaborador 
-GitHub
-
-Como adicionar seu nome
-
-Você pode estender essa seção adicionando nome, perfil GitHub, e uma breve nota sobre o que cada um fez no projeto.
-
-📄 Licença
-
-(Sugestão)
-Este projeto está licenciado sob a licença MIT — consulte o arquivo LICENSE para mais detalhes.
-
-Se você ainda não definiu uma licença, pode ser interessante adicionar uma. Licenças ajudam quem quer usar ou contribuir com seu código. 
-DEV Community
