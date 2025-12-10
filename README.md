@@ -1,112 +1,94 @@
-# XDrones 🚁
+# 🚁 XDRONES: Plataforma E-commerce de Drones Profissionais
 
-Projeto de aplicação web com **frontend** e **backend** integrado.
+## 🚀 Visão Geral do Projeto
 
----
+O **XDrones** é uma solução de e-commerce completa, desenvolvida como um projeto educacional, focada na venda e gestão de drones profissionais (Agricultura, Indústria e Segurança). O projeto segue o padrão *Client-Server*, utilizando **ASP.NET Core (C#)** para o Backend API e **HTML/CSS/JavaScript puro** para o Frontend.
 
-## 🔎 Visão Geral
+O foco principal do desenvolvimento foi a implementação de um sistema de autenticação robusto e uma forte camada de regras de negócio (*Business Layer*) para garantir a integridade dos dados e a segurança do usuário.
 
-**XDrones** é uma aplicação web desenvolvida com arquitetura separada entre **backend** e **frontend**, facilitando manutenção, escalabilidade e colaboração entre desenvolvedores.
+## 👥 Membros da Equipe
 
-O objetivo deste projeto é servir como base para estudo, desenvolvimento e prática de conceitos de aplicações web modernas, utilizando tecnologias amplamente adotadas no mercado.
+Este projeto foi desenvolvido por:
 
-Este README tem como finalidade orientar novos desenvolvedores e usuários sobre:
-- O propósito do projeto  
-- Sua estrutura  
-- Como executá-lo localmente  
-- Quem são os desenvolvedores envolvidos  
-
----
-
-## 📁 Estrutura do Repositório
-
-/Backend        # Código da API e lógica do servidor
-/FrontEnd       # Código da interface do usuário (cliente web)
-XDrones.sln     # Solução do projeto (.NET / Visual Studio)
+* **Thiago Pinheiro dos Santos**
+* **Matheus da Silva Salgado Veiga**
+* **Rennan Miranda Rodrigues Gonçalves dos Santos Leite**
+* **João Victor de Oliveira Macedo**
+* **Roniel Santana Faria**
 
 ---
 
-##🚀 Tecnologias Utilizadas
-##🔧 Backend
+## 🖼️ Demonstração Visual
 
-C#
+Veja a seguir os principais componentes da interface e as funcionalidades implementadas.
 
-.NET
-
-Entity Framework Core
-
-MySQL
-
----
-
-🎨 Frontend
-
-HTML
-
-CSS
-
-JavaScript
+| Funcionalidade | Print |
+| :--- | :--- |
+| **Página Inicial** | ![Página Inicial](assets/screenshots/Home.png) |
+| **Formulário de Cadastro** | ![Cadastro de Usuário](assets/screenshots/Cadastro.png) |
+| **Vitrine** | ![Vitrine](assets/screenshots/Produtos.png) |
+| **Página Minha Conta (Perfil)** | ![Perfil do Usuário](assets/screenshots/Perfil.png) |
+| **Finalizar Compra (Checkout)** | ![Checkout](assets/screenshots/Carrinho.png) |
+| **Pedido Concluido** | ![Pedido Concluido](assets/screenshots/Pedidos.png) |
 
 ---
 
-🛠️ Como Executar o Projeto (Ambiente de Desenvolvimento)
-✅ Pré-requisitos
+## ⚙️ Tecnologias Utilizadas
 
-.NET SDK e/ou Visual Studio
+| Camada | Tecnologia | Componentes Principais |
+| :--- | :--- | :--- |
+| **Backend (API)** | ASP.NET Core 7/8 (C#) | Controllers (API REST), Entity Framework Core (ORM) |
+| **Banco de Dados** | **MySQL** | Sistema de Gerenciamento de Banco de Dados Relacional (SGBDR) |
+| **Segurança** | **JWT (JSON Web Tokens)** | Autenticação baseada em tokens. |
+| **Criptografia** | **BCrypt** | Hashing de senhas para garantir segurança e impedir visualização. |
+| **Frontend** | HTML5, CSS3, JavaScript (ES6+) | Consumo da API via `fetch`, lógica de carrinho (LocalStorage), UI responsiva. |
 
-Navegador web moderno (Chrome, Edge, Firefox, etc.)
+## 🔒 Destaques de Segurança e Regras de Negócio
 
-MySQL configurado e em execução
+O projeto XDrones utiliza uma forte Camada de Negócios (BLL - Business Logic Layer) no Backend para garantir a segurança e a integridade dos dados.
 
----
+### 1. Autenticação e Autorização Segura
 
-▶️ Passo a Passo
+* **Implementação de JWT (JSON Web Tokens):** Token emitido após o login para autenticar todas as requisições protegidas.
+* **Criptografia BCrypt:** Utilizada para fazer o *hash* e armazenar senhas de forma segura.
 
-Clone o repositório:
+### 2. Camada de Negócios (Validação Rigorosa)
 
-git clone https://github.com/ThiagoPinheiro-pnp/XDrones.git
+* **Validação de Senhas Fortes:** Exige senhas com **no mínimo 8 caracteres**, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.
+* **Validação de E-mail:** Verificação de formato de e-mail válido.
+* **Validação de CPF:** Verificação da validade estrutural do CPF, incluindo o cálculo do dígito verificador.
 
+## 🗺️ Estrutura da API REST
 
-Abra o arquivo XDrones.sln no Visual Studio ou na IDE de sua preferência
+A API expõe os seguintes *endpoints* essenciais:
 
-Execute o Backend:
+| Módulo | Endpoint Base | Método | Descrição |
+| :--- | :--- | :--- | :--- |
+| **Autenticação** | `/api/Auth/register` | `POST` | Cria um novo usuário (com validações de negócio). |
+| **Autenticação** | `/api/Auth/login` | `POST` | Autentica o usuário e retorna o JWT. |
+| **Produtos** | `/api/Produtos` | `GET` | Lista todos os drones disponíveis na loja. |
+| **Pedidos** | `/api/Pedidos` | `POST` | Finaliza uma compra, registrando o pedido no banco. **(Requer JWT)** |
+| **Pedidos** | `/api/Pedidos/usuario/{id}` | `GET` | Lista os pedidos de um usuário específico. **(Requer JWT)** |
 
-Pelo Visual Studio (botão Run)
+## 🛠️ Como Executar o Projeto
 
-Ou via terminal:
+### Requisitos
 
-dotnet run
+* .NET SDK (Versão 7 ou superior)
+* Servidor **MySQL** (com *connection string* configurada).
 
+### Backend (API C#)
 
-Execute o Frontend:
+1.  Navegue até a pasta `Backend`.
+2.  **Criação das Tabelas:** Rode o script SQL que recria o banco de dados e insere dados iniciais (ou utilize `dotnet ef database update` se as migrations estiverem configuradas).
+3.  **Executar:**
+    ```bash
+    dotnet run
+    ```
+    O Swagger (documentação da API) pode ser acessado no endereço `/swagger` (ex: `https://localhost:7155/swagger`).
 
-Abra os arquivos HTML diretamente no navegador
-ou
+### Frontend (Website HTML/JS)
 
-Utilize um servidor local, caso esteja configurado
-
-Acesse a aplicação no navegador:
-
-http://localhost:5000
-
-
-(a porta pode variar conforme a configuração do projeto)
-
----
-
-👥 Desenvolvedores
-
-Projeto desenvolvido por:
-
-Thiago Pinheiro dos Santos
-
-Matheus da Silva Salgado Veiga
-
-Rennan Miranda Rodrigues Gonçalves dos Santos Leite
-
-João Victor de Oliveira Macedo
-
-Roniel Santana Faria
-
-
-Todos contribuíram para o desenvolvimento do XDrones, atuando nas camadas de frontend, backend e na organização geral da aplicação.
+1.  Navegue até a pasta `FrontEnd`.
+2.  Abra o arquivo `index.html` ou use uma extensão como o Live Server (VS Code).
+3.  **Ajuste da API:** Confirme se as constantes `API_URL` nos arquivos JavaScript (como `checkout.js` e `cadastro.js`) estão apontando para a URL correta do seu Codespaces (geralmente a porta 7155 exposta).
