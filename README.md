@@ -16,6 +16,23 @@ Este projeto foi desenvolvido por:
 * **João Victor de Oliveira Macedo**
 * **Roniel Santana Faria**
 
+---
+
+## 🖼️ Demonstração Visual
+
+Veja a seguir os principais componentes da interface e as funcionalidades implementadas.
+
+| Funcionalidade | Print |
+| :--- | :--- |
+| **Página Inicial** | ![Página Inicial](assets/screenshots/Home.png) |
+| **Formulário de Cadastro** | ![Cadastro de Usuário](assets/screenshots/Cadastro.png) |
+| **Vitrine** | ![Vitrine](assets/screenshots/Produtos.png) |
+| **Página Minha Conta (Perfil)** | ![Perfil do Usuário](assets/screenshots/Perfil.png) |
+| **Finalizar Compra (Checkout)** | ![Checkout](assets/screenshots/Carrinho.png) |
+| **Pedido Concluido** | ![Pedido Concluido](assets/screenshots/Pedidos.png) |
+
+---
+
 ## ⚙️ Tecnologias Utilizadas
 
 | Camada | Tecnologia | Componentes Principais |
@@ -28,24 +45,22 @@ Este projeto foi desenvolvido por:
 
 ## 🔒 Destaques de Segurança e Regras de Negócio
 
-O projeto XDrones foi construído com uma ênfase particular na segurança e na validação rigorosa dos dados, utilizando uma forte Camada de Negócios (BLL - Business Logic Layer) no Backend.
+O projeto XDrones utiliza uma forte Camada de Negócios (BLL - Business Logic Layer) no Backend para garantir a segurança e a integridade dos dados.
 
 ### 1. Autenticação e Autorização Segura
 
-* **Implementação de JWT (JSON Web Tokens):** Após o login, a API emite um token que é usado para autenticar todas as requisições subsequentes.
-* **Criptografia BCrypt:** Todas as senhas de usuários são armazenadas no banco de dados utilizando a biblioteca BCrypt.
+* **Implementação de JWT (JSON Web Tokens):** Token emitido após o login para autenticar todas as requisições protegidas.
+* **Criptografia BCrypt:** Utilizada para fazer o *hash* e armazenar senhas de forma segura.
 
 ### 2. Camada de Negócios (Validação Rigorosa)
 
-A validação rigorosa dos dados é aplicada antes do armazenamento, garantindo a qualidade e integridade do sistema:
-
-* **Validação de Senhas Fortes:** O cadastro exige senhas com **no mínimo 8 caracteres**, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.
-* **Validação de E-mail:** Verificação de formato de e-mail válido para evitar cadastros inválidos.
+* **Validação de Senhas Fortes:** Exige senhas com **no mínimo 8 caracteres**, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.
+* **Validação de E-mail:** Verificação de formato de e-mail válido.
 * **Validação de CPF:** Verificação da validade estrutural do CPF, incluindo o cálculo do dígito verificador.
 
 ## 🗺️ Estrutura da API REST
 
-A API expõe os seguintes *endpoints* essenciais para a gestão dos dados da plataforma:
+A API expõe os seguintes *endpoints* essenciais:
 
 | Módulo | Endpoint Base | Método | Descrição |
 | :--- | :--- | :--- | :--- |
@@ -60,22 +75,20 @@ A API expõe os seguintes *endpoints* essenciais para a gestão dos dados da pla
 ### Requisitos
 
 * .NET SDK (Versão 7 ou superior)
-* Servidor **MySQL** (com *connection string* configurada no `appsettings.json` do Backend).
-* Node.js (Opcional, para executar o Front-end via Live Server).
+* Servidor **MySQL** (com *connection string* configurada).
 
 ### Backend (API C#)
 
 1.  Navegue até a pasta `Backend`.
-2.  **Configuração do Banco:** Certifique-se de que a *connection string* do MySQL está correta em `appsettings.json`.
-3.  **Criação das Tabelas:** Rode o script SQL que recria o banco de dados e insere dados iniciais (usuários, produtos e pedidos).
-4.  **Executar:**
+2.  **Criação das Tabelas:** Rode o script SQL que recria o banco de dados e insere dados iniciais (ou utilize `dotnet ef database update` se as migrations estiverem configuradas).
+3.  **Executar:**
     ```bash
     dotnet run
     ```
-    O servidor será iniciado. O Swagger (documentação da API) pode ser acessado no endereço `/swagger` (ex: `https://localhost:7155/swagger`).
+    O Swagger (documentação da API) pode ser acessado no endereço `/swagger` (ex: `https://localhost:7155/swagger`).
 
 ### Frontend (Website HTML/JS)
 
 1.  Navegue até a pasta `FrontEnd`.
 2.  Abra o arquivo `index.html` ou use uma extensão como o Live Server (VS Code).
-3.  **Ajuste da API:** Verifique e ajuste as constantes `API_URL` nos arquivos JavaScript (`login.js`, `cadastro.js`, `checkout.js`, etc.) para a porta e URL corretas do seu Backend em execução.
+3.  **Ajuste da API:** Confirme se as constantes `API_URL` nos arquivos JavaScript (como `checkout.js` e `cadastro.js`) estão apontando para a URL correta do seu Codespaces (geralmente a porta 7155 exposta).
