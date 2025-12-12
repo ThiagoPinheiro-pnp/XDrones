@@ -4,7 +4,7 @@
 
 O **XDrones** é uma solução de e-commerce completa, desenvolvida como um projeto educacional, focada na venda e gestão de drones profissionais (Agricultura, Indústria e Segurança). O projeto segue o padrão *Client-Server*, utilizando **ASP.NET Core (C#)** para o Backend API e **HTML/CSS/JavaScript puro** para o Frontend.
 
-O foco principal do desenvolvimento foi a implementação de um sistema de autenticação robusto e uma forte camada de regras de negócio (*Business Layer*) para garantir a integridade dos dados e a segurança do usuário.
+O foco principal do desenvolvimento foi a implementação de um sistema de autenticação robusto e uma forte camada de regras de negócio (*Business Layer*) para garantir a integridade dos dados e a segurança dos usuários.
 
 ## 👥 Membros da Equipe
 
